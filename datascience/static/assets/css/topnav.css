@@ -1,0 +1,64 @@
+@charset "utf-8";
+/* CSS Document */
+
+@media(min-width:768px) {
+ 
+ 
+  .navbar-default {
+  
+   -webkit-transition: all .35s;
+    -moz-transition: all .35s;
+    transition: all .35s;
+    padding: 15px 0;
+	background:transparent !important;
+	border-color:transparent !important;
+	
+    /* Add additional styles here for the UNCOLLAPSED state */
+  }	
+  
+  
+  .navbar-default.affix {
+    padding: 3px;
+	background:#fff !important;
+	border-color:#efefef !important;
+    /* Add additional styles here for the COLLAPSED state */
+  }
+  
+  
+  .navbar-default-inner {
+  
+   -webkit-transition: all .35s;
+    -moz-transition: all .35s;
+    transition: all .35s;
+    padding: 15px 0;
+	background: #575f6b !important;
+	border-color:transparent !important;
+	
+  }	
+  
+  
+    .navbar-default-inner.affix {
+    padding: 3px;
+	background:#fff !important;
+	border-color:#efefef !important;
+    /* Add additional styles here for the COLLAPSED state */
+  
+	}
+  
+  .navbar-default,.navbar-default-inner .navbar-nav > li > a
+  {
+	  letter-spacing:1px;
+	  font-size:13pt;
+	 color:#fcb124;
+	 font-weight:500;
+  }
+  
+   .navbar-default,.navbar-default-inner .navbar-nav > li > a:hover {
+    background:#218692;
+	color:#fff;
+} 
+  
+  
+}
+
+
