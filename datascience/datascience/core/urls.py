@@ -20,4 +20,8 @@ urlpatterns = [
     url(r'^$', views.home),
     url(r'^credit/$', views.creditAnalyis ,name="credit-analysis"),
     url(r'^credit/predit/$', views.creditPredict ,name="credit-predit"),
+    url(r'^summarize/$',views.summarize,name="summarize"),
+    url(r'^ner/$',views.ner,name="ner"),
+    url(r'^sentiment/$',views.sentiment,name="sentiment"),
+    url(r'^langdect/$',views.langdetect,name="langdect"),
 ]

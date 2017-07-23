@@ -57,3 +57,15 @@ def creditAnalyis(request):
 
     resp['labels']  = credit_data
     return render(request,"credit-analysis.html" , resp)
+
+def summarize(request):
+    return render(request,"summarizer.html")
+
+def ner(request):
+    return render(request,"ner.html")
+
+def sentiment(request):
+    return render(request,"sentiment.html")
+
+def langdetect(request):
+    return render(request,"langdetect.html")
