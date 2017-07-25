@@ -21,7 +21,7 @@
                      <div class="form-group">
                         <label class="col-sm-12 control-label">Content: </label>
                         <div class="col-sm-12">
-                           <textarea  ng-model="NER.text" required="true" class="form-control" rows="5" ></textarea>
+                           <textarea  ng-model="NER.data" required="true" class="form-control" rows="5" ></textarea>
                         </div>
                      </div>
                     <div class="col-md-12 m-t-20">
@@ -55,14 +55,20 @@
             <label for="tab2"><i class="fa fa-code"></i><span>TECHNICAL</span></label>
             <section id="content1" class="tab-content">
                <p class="skl-txt-big1">
-                  Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries.<br><br>
-                  Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries,
+                  Named-entity recognition (NER) (also known as entity identification, entity chunking and entity extraction) is a subtask of 
+                  information extraction that seeks to locate and classify named entities in text into pre-defined categories such as the names of persons, 
+                  organizations, locations, expressions of times, quantities, monetary values, percentages, etc.
                </p>
             </section>
             <section id="content2" class="tab-content">
                <p class="skl-txt-big1">
-                  Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries.<br><br>
-                  Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries,
+                  NER systems have been created that use linguistic grammar-based techniques as well as statistical models, i.e. machine learning.
+                   Hand-crafted grammar-based systems typically obtain better precision, but at the cost of lower recall and months of work by 
+                   experienced computational linguists[citation needed]. Statistical NER systems typically require a large amount of manually 
+                   annotated training data. Semisupervised approaches have been suggested to avoid part of the annotation effort.
+               </p>
+                  <p class="skl-txt-big1">
+                  Many different classifier types have been used to perform machine-learned NER, with conditional random fields being a typical choice
                </p>
             </section>
          </div>
@@ -74,6 +80,8 @@
       </div>
    </div>
 </div>
+{% endblock %}
+{% block extrajs%}
 <script src="{% static 'assets/scripts/ner.js' %}"></script> 
 {% endblock %}
 

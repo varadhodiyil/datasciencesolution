@@ -4,7 +4,7 @@ app.controller("postCtrl", function ($scope, $http)
    $scope.submit = function (isValid) {
         if (isValid) 
         {
-            $http.post("summarize/", this.Sentment).then(function (result) 
+            $http.post(apiURL+"service/sentiment", this.Sentment).then(function (result) 
             {
                 $scope.summary = result.data;
             });
