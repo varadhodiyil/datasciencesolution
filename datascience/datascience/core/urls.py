@@ -24,4 +24,7 @@ urlpatterns = [
     url(r'^ner/$',views.ner,name="ner"),
     url(r'^sentiment/$',views.sentiment,name="sentiment"),
     url(r'^langdect/$',views.langdetect,name="langdect"),
+    url(r'^clv/$',views.clv,name="clv"),
+    url(r'^loyalty/$',views.loyalty,name="loyalty"),
+    url(r'^churn/$',views.churn,name="churn"),
 ]

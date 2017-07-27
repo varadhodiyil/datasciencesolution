@@ -1,0 +1,89 @@
+
+
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="container m-t-inner" ng-app="clvApp">
+   <div class="row">
+      <div class="col-sm-12 text-center">
+         <h1 class="head-txt-1 txt-upper m-t-120 skl-clr1">Content AI </h1>
+         <h4 class="skl-lett-spac">Customer Retention</h4>
+      </div>
+   </div>
+   <hr>
+   <div class="row" ng-controller="postCtrl">
+      <div class="col-md-12 skl-box-outer">
+         <div class="col-md-6">
+            <div class="panel panel-default skl-panel1">
+               <div class="panel-heading"><span class="skl-txt-big1">Customer Retention</span></div>
+               <div class="panel-body">
+                  <form class="form-horizontal" name="creditForm" >
+                    <div class="form-group">
+                        <input type="file"  name="myfile[]"  file-model = "myFile" class="file">
+                        <div class="input-group file-upload col-xs-12">
+                          <input type="text" class="form-control input-lg" disabled placeholder="Upload File">
+                          <span class="input-group-btn">
+                            <button class="browse btn btn-primary input-lg" type="button"><i class="glyphicon glyphicon-search"></i> Browse</button>
+                          </span>
+                        </div>
+                      </div>
+                    <div class="col-md-12 m-t-20">
+                     <button type="submit" ng-click="uploadFile()"  class="col-md-6 btn skl-btn1 pull-right txt-upper">Submit</button>
+                    </div>
+                  </form>
+               </div>
+            </div>
+         </div>
+         <div class="col-md-6">
+            <div class="panel panel-default skl-panel2">
+               <div class="panel-heading"><span class="skl-txt-big1">Data</span></div>
+               <div class="panel-body" style="width:502px;height:320px;">
+                  <span id="probdist" ng-bind="summary" ></span>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+   <div class="row">
+      <div class="col-md-12">
+         <h2 class="text-center m-t-40 txt-upper">How it Works</h2>
+      </div>
+   </div>
+   <div class="row m-t-40">
+      <div class="col-md-12">
+         <div class="tab_container">
+            <input id="tab1" type="radio" name="tabs" checked>
+            <label for="tab1"><i class="fa fa-pencil-square-o"></i><span>NON-TECHNICAL</span></label>
+            <input id="tab2" type="radio" name="tabs">
+            <label for="tab2"><i class="fa fa-code"></i><span>TECHNICAL</span></label>
+            <section id="content1" class="tab-content">
+               <p class="skl-txt-big1">
+                  Customer retention refers to the activities and actions companies and organizations take to reduce the number of 
+                  customer defections. The goal of customer retention programs is to help companies retain as many customers as possible, 
+                  often through customer loyalty and brand loyalty initiatives. It is important to remember 
+                   that customer retention begins with the first contact a customer has with a company and continues throughout the entire lifetime of the relationship.
+               </p>
+            </section>
+            <section id="content2" class="tab-content">
+               <p class="skl-txt-big1">
+                       <pre>
+                 <code>
+  curl '<script>document.write(apiURL) </script>service/churn' -X POST -H 'Content-Type: text/csv' -F  <span class="code-params">'file=@data.csv'
+</span>
+</code>
+</pre> 
+            </section>
+         </div>
+      </div>
+   </div>
+   <div class="row m-t-40 m-b-50">
+      <div class="col-md-12 text-center">
+         <a data-toggle="modal" data-target="#demorequest" class="btn btn-lg btn-circle skl-btn2 txt-upper col-sm-6 center-align-div">Request a custom demo</a>
+      </div>
+   </div>
+</div>
+{% endblock %}
+{% block extrajs%}
+<script src="{% static 'assets/scripts/retention.js' %}"></script> 
+{% endblock %}
+

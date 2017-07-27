@@ -7,6 +7,10 @@ app.controller("postCtrl", function ($scope, $http)
             $http.post(apiURL+"service/ner", this.NER).then(function (result) 
             {
                 $scope.summary = result.data;
+                $(document).ready(function () 
+                {
+                    divolte.signal("ner_Submit",{"query":$scope.NER});
+                });
             });
         }
    }

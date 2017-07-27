@@ -4,6 +4,10 @@ app.controller("postCtrl", function ($scope, $http) {
     $scope.Credit = {};
     $scope.submit = function (isValid) {
         if (isValid) {
+            $(document).ready(function () 
+            {
+                    divolte.signal("CreditAnalysis_Submit",{"query":$scope.Credit});
+            });
             $http.post("predit/", this.Credit).then(function (result) {
                 google.charts.load("current", { packages: ['corechart'] });
                 google.charts.setOnLoadCallback(drawChart);
@@ -52,6 +56,6 @@ app.controller("postCtrl", function ($scope, $http) {
         }
     };
 });
-$(document).ready(function () {
-    divolte.signal("CreditAnalysis",{});
-});
+    $(document).ready(function () {
+        divolte.signal("CreditAnalysis",{});
+    });

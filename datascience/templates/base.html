@@ -13,6 +13,9 @@
       <link href="{% static 'assets/boot/css/bootstrap.min.css' %}" rel="stylesheet">
       <link href="{% static 'assets/fa/css/font-awesome.min.css' %}" rel="stylesheet">
       <link href="{% static 'assets/css/style.css' %}" rel="stylesheet">
+       <script >
+        let apiURL = "http://34.209.99.196:5000/";
+        </script>
       <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
       <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
       <!--[if lt IE 9]>
@@ -63,9 +66,7 @@
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script type="text/javascript" src="http://13.59.28.211/clickstream/divolte.js"></script>
     <script src="{% static 'assets/js/angular.min.js' %}"></script>
-    <script >
-        let apiURL = "http://34.209.99.196:5000/";
-    </script>
+   
     {% block extrajs%}
     {% endblock %}
    </body>
