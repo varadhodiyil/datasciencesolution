@@ -1,0 +1,98 @@
+ {% extends 'base.html' %} {% load static %} {% block content %}
+<div class="container m-t-inner" ng-app="creditApp">
+  <div class="row">
+    <div class="col-sm-12 text-center">
+      <h1 class="head-txt-1 txt-upper m-t-120 skl-clr1">Banking & Finance</h1>
+      <h4 class="skl-lett-spac">Credit Modelling</h4>
+    </div>
+  </div>
+  <hr>
+  <div class="row">
+    <div class="col-md-12 skl-box-outer">
+      <div class="col-md-6">
+        <div class="panel panel-default skl-panel1">
+          <div class="panel-heading"><span class="skl-txt-big1">Credit Applicant Profile</span></div>
+          <div class="panel-body">
+            <form class="form-horizontal" name="creditForm" ng-controller="postCtrl">
+              {% for x in labels %}
+              <div class="form-group">
+                <label class="col-sm-6 control-label">{{x.label}}</label>
+                <div class="col-sm-6">
+                  <input type="text" ng-model="Fraud.{{x.label}}" ng-init="Fraud.{{x.label}}={{x.value}}" required="true" class="form-control">
+                </div>
+              </div>
+              {% endfor %}
+              <div class="col-md-12 m-t-20">
+                <button type="submit" ng-click="submit(creditForm.$valid)" class="btn skl-btn1 nav-justified txt-upper">Predict Credit Risk</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="panel panel-default skl-panel2">
+          <div class="panel-heading"><span class="skl-txt-big1">Applicant Risk Scorecard</span></div>
+          <div class="panel-body">
+            <div id="probdist" style="width:502px;height:636px;"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <h2 class="text-center m-t-40 txt-upper">How it Works</h2>
+    </div>
+  </div>
+  <div class="row m-t-40">
+    <div class="col-md-12">
+      <div class="tab_container">
+        <input id="tab1" type="radio" name="tabs" checked>
+        <label for="tab1"><i class="fa fa-pencil-square-o"></i><span>NON-TECHNICAL</span></label>
+        <input id="tab2" type="radio" name="tabs">
+        <label for="tab2"><i class="fa fa-code"></i><span>TECHNICAL</span></label>
+        <section id="content1" class="tab-content">
+          <p class="skl-txt-big1">
+            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy
+            text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen
+            book. It has survived not only five centuries.<br><br> Lorem Ipsum is simply dummy text of the printing
+            and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when
+            an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only
+            five centuries,
+          </p>
+        </section>
+        <section id="content2" class="tab-content">
+          <p class="skl-txt-big1">
+            This model takes users loan application information and creates a credit risk score card!
+            <pre>
+                 <code>
+curl '<script>document.write(window.location.host)</script>/credit/predit/' -H 'Content-Type: application/json' --data \ 
+<span class="code-params">'{
+  "RevolvingUtilizationOfUnsecuredLines": 0.05,
+  "Age": 30,
+  "Days59PastDueNotWorse": 25,
+  "DebtRatio": 0.25,
+  "MonthlyIncome": 2500,
+  "NumberOfOpenCreditLinesAndLoans": 80,
+  "NumberOfTimes90DaysLate": 70,
+  "NumberRealEstateLoansOrLines": 10,
+  "NumberOfTime60To89DaysPastDueNotWorse": 125,
+  "NumberOfDependents": 2
+}'
+</span>
+</code>
+</pre> 
+          </p>
+        </section>
+      </div>
+    </div>
+  </div>
+  <div class="row m-t-40 m-b-50">
+    <div class="col-md-12 text-center">
+      <a data-toggle="modal" data-target="#demorequest" class="btn btn-lg btn-circle skl-btn2 txt-upper col-sm-6 center-align-div">Request a custom demo</a>
+    </div>
+  </div>
+</div>
+{% endblock %} {% block extrajs%}
+<script src="{% static 'assets/scripts/fraud-detection.js' %}"></script>
+{% endblock %}
