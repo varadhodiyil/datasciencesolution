@@ -51,7 +51,12 @@ class RandomForest():
     def predict(self,dataset):
         # if self.classifier is None:
         #     self.loadModel()
-        print self.classiferModel.predict(dataset)
+        result = dict()
+        classes = self.classiferModel.classes_
+        result['classes'] = classes
+        result['predicted'] = self.classiferModel.predict(dataset)
+        result['probability'] = self.classiferModel.predict(dataset)
+        return result
 
 def load_credit_fraud_Model():
     if os.path.exists(CREDIT_FRAUD_PICKLE):

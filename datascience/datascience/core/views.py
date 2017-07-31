@@ -6,7 +6,7 @@ from rest_framework.parsers import JSONParser, FormParser
 from rest_framework.decorators import api_view
 from rest_framework.decorators import parser_classes
 from rest_framework.response import Response
-from datascience.core.resources import predict_credit_risk
+from datascience.core.resources import predict_credit_risk , predict_fraud
 # Create your views here.
 credit_data = [
             {
@@ -211,6 +211,6 @@ def fraudDetection(request):
     resp['labels'] = labels
     if request.method == "POST":
         data = request.data
-        print data
-        return Response(data)
+        resp = predict_fraud(data)
+        return Response(resp)
     return render(request, "fraud-detection.html",resp)

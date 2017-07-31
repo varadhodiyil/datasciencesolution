@@ -66,18 +66,38 @@
             This model takes users loan application information and creates a credit risk score card!
             <pre>
                  <code>
-curl '<script>document.write(window.location.host)</script>/credit/predit/' -H 'Content-Type: application/json' --data \ 
+curl '<script>document.write(window.location.host)</script>/fraud-detection/' -X POST -H 'Content-Type: application/json' --data \ 
 <span class="code-params">'{
-  "RevolvingUtilizationOfUnsecuredLines": 0.05,
-  "Age": 30,
-  "Days59PastDueNotWorse": 25,
-  "DebtRatio": 0.25,
-  "MonthlyIncome": 2500,
-  "NumberOfOpenCreditLinesAndLoans": 80,
-  "NumberOfTimes90DaysLate": 70,
-  "NumberRealEstateLoansOrLines": 10,
-  "NumberOfTime60To89DaysPastDueNotWorse": 125,
-  "NumberOfDependents": 2
+    "Time": 0,
+    "V1": -1.35980713367,
+    "V2": -0.0727811733098,
+    "V3": 2.53634673797,
+    "V4": 1.37815522427,
+    "V5": -0.338320769943,
+    "V6": "1",
+    "V7": 0.239598554061,
+    "V8": 0.0986979012611,
+    "V9": 0.363786969611,
+    "V10": 0.0907941719789,
+    "V11": -0.551599533261,
+    "V12": -0.617800855762,
+    "V13": -0.991389847235,
+    "V14": -0.3111693537,
+    "V15": 1.46817697209,
+    "V16": -0.470400525259,
+    "V17": 0.207971241929,
+    "V18": 0.0257905801986,
+    "V19": 0.403992960256,
+    "V20": 0.25141209824,
+    "V21": -0.0183067779442,
+    "V22": 0.277837575559,
+    "V23": -0.110473910189,
+    "V24": 0.0669280749147,
+    "V25": 0.128539358274,
+    "V26": -0.189114843889,
+    "V27": 0.13355837674,
+    "V28": "0.0210530534538",
+    "Amount": "149000.62"
 }'
 </span>
 </code>
