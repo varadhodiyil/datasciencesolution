@@ -4,7 +4,7 @@ app.controller("postCtrl", function ($scope, $http)
    $scope.submit = function (isValid) {
         if (isValid) 
         {
-            $http.post("langdetect/", this.LangDetect).then(function (result) 
+            $http.post("#", this.LangDetect).then(function (result) 
             {
                 $scope.summary = result.data;
             });

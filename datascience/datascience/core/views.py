@@ -6,40 +6,90 @@ from rest_framework.parsers import JSONParser, FormParser
 from rest_framework.decorators import api_view
 from rest_framework.decorators import parser_classes
 from rest_framework.response import Response
-from datascience.core.resources import predict_credit_risk , predict_fraud
+from datascience.core.resources import predict_credit_risk , predict_fraud , lang_detect
 # Create your views here.
 credit_data = [
-            {
-                "type": "RevolvingUtilizationOfUnsecuredLines" , "min":"0" , "max":"1" , "step":"0.01","val":0.05
-            },
-            {
-                "type": "Age" , "min":"18" , "max":"80" , "step":"1" , "val":30
-            },
-            {
-                "type": "Days59PastDueNotWorse" , "min":"0" , "max":"1000" , "step":"1","val" : 25
-            },
-            {
-                "type": "DebtRatio" , "min":"0" , "max":"1" , "step":"0.01" , "val" : 0.25
-            },
-            {
-                "type": "MonthlyIncome" , "min":"100" , "max":"100000000" , "step":"50" , "val":2500
-            },
-            {
-                "type": "NumberOfOpenCreditLinesAndLoans" , "min":"0" , "max":"1000" , "step":"1","val" : 80
-            },
-            {
-                "type": "NumberOfTimes90DaysLate" , "min":"0" , "max":"1000" , "step":"1","val" : 70
-            },
-            {
-                "type": "NumberRealEstateLoansOrLines" , "min":"0" , "max":"1000" , "step":"1", "val" : 10
-            },
-            {
-                "type": "NumberOfTime60To89DaysPastDueNotWorse" , "min":"0" , "max":"1000" , "step":"1" ,"val" : 125
-            },
-            {
-                "type": "NumberOfDependents" , "min":"0" , "max":"10" , "step":"1" ,"val" : 2
-            }]
-
+    {
+        "val": 0.05, 
+        "min": "0", 
+        "max": "1", 
+        "value": "RevolvingUtilizationOfUnsecuredLines", 
+        "step": "0.01", 
+        "type": "RevolvingUtilizationOfUnsecuredLines"
+    }, 
+    {
+        "val": 30, 
+        "min": "18", 
+        "max": "80", 
+        "value": "Age", 
+        "step": "1", 
+        "type": "Age"
+    }, 
+    {
+        "val": 25, 
+        "min": "0", 
+        "max": "1000", 
+        "value": "Days59PastDueNotWorse", 
+        "step": "1", 
+        "type": "Days59PastDueNotWorse"
+    }, 
+    {
+        "val": 0.25, 
+        "min": "0", 
+        "max": "1", 
+        "value": "DebtRatio", 
+        "step": "0.01", 
+        "type": "DebtRatio"
+    }, 
+    {
+        "val": 2500, 
+        "min": "100", 
+        "max": "100000000", 
+        "value": "MonthlyIncome", 
+        "step": "50", 
+        "type": "MonthlyIncome"
+    }, 
+    {
+        "val": 80, 
+        "min": "0", 
+        "max": "1000", 
+        "value": "NumberOfOpenCreditLinesAndLoans", 
+        "step": "1", 
+        "type": "NumberOfOpenCreditLinesAndLoans"
+    }, 
+    {
+        "val": 70, 
+        "min": "0", 
+        "max": "1000", 
+        "value": "Number Of Times 90Days Late", 
+        "step": "1", 
+        "type": "NumberOfTimes90DaysLate"
+    }, 
+    {
+        "val": 10, 
+        "min": "0", 
+        "max": "1000", 
+        "value": "Number Real Estate Loans Or Lines", 
+        "step": "1", 
+        "type": "NumberRealEstateLoansOrLines"
+    }, 
+    {
+        "val": 125, 
+        "min": "0", 
+        "max": "1000", 
+        "value": "Number Of Time 60-89 Days Past Due Not Worse", 
+        "step": "1", 
+        "type": "NumberOfTime60To89DaysPastDueNotWorse"
+    }, 
+    {
+        "val": 2, 
+        "min": "0", 
+        "max": "10", 
+        "value": "Number Of Dependents", 
+        "step": "1", 
+        "type": "NumberOfDependents"
+    }
+]
 def home(request):
     return render(request,"index.html")
 
@@ -70,7 +120,16 @@ def ner(request):
 def sentiment(request):
     return render(request,"sentiment.html")
 
+@api_view(["GET","POST"])
+@parser_classes((JSONParser,FormParser))
 def langdetect(request):
+    if request.method == "POST":
+        data = request.data
+        r = lang_detect(data)
+        resp = list()
+        for l in r:
+            resp.append(l.__dict__)
+        return Response(resp)
     return render(request,"langdetect.html")
 
 def clv(request):

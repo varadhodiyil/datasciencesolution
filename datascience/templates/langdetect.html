@@ -33,9 +33,13 @@
          </div>
          <div class="col-md-6">
             <div class="panel panel-default skl-panel2">
-               <div class="panel-heading"><span class="skl-txt-big1">Summary</span></div>
+               <div class="panel-heading"><span class="skl-txt-big1">Language probabilities</span></div>
                <div class="panel-body">
-                  <span id="probdist" ng-bind="summary" style="width:502px;height:636px;"></span>
+                  <span id="probdist" ng-repeat="s in summary" style="width:502px;height:636px;">
+                    {% verbatim %}
+                    <p class="skl-txt-big1">{{s.lang}}: {{s.prob}}</p>
+                    {% endverbatim %}
+                  </span>
                </div>
             </div>
          </div>
@@ -55,14 +59,24 @@
             <label for="tab2"><i class="fa fa-code"></i><span>TECHNICAL</span></label>
             <section id="content1" class="tab-content">
                <p class="skl-txt-big1">
-                  Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries.<br><br>
-                  Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries,
+                  In natural language processing, language identification or language guessing is the problem of determining 
+                  which natural language given content is in. Computational approaches to this problem view it as a special case 
+                  of text categorization, solved with various statistical methods.
                </p>
             </section>
             <section id="content2" class="tab-content">
                <p class="skl-txt-big1">
-                  Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries.<br><br>
-                  Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries,
+                              <pre>
+                 <code>
+curl '<script>document.write(base)</script>/langdetect/' -H 'Content-Type: application/json' --data \ 
+<span class="code-params">'{
+  "text": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
+          Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer 
+          took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries."
+}'
+</span>
+</code>
+</pre>
                </p>
             </section>
          </div>

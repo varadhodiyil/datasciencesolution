@@ -9,7 +9,6 @@ import pickle
 
 
 CREDIT_FRAUD_PICKLE =  os.path.join(os.path.dirname(__file__),"classified/credit_fraud.pickle")
-print CREDIT_FRAUD_PICKLE
 class RandomForest():
 
     def __init__(self,trainFile="creditcard.csv",classColumn=""):
@@ -54,15 +53,13 @@ class RandomForest():
         result = dict()
         classes = self.classiferModel.classes_
         result['classes'] = classes
-        result['predicted'] = self.classiferModel.predict(dataset)
-        result['probability'] = self.classiferModel.predict(dataset)
+        result['predicted'] = self.classiferModel.predict(dataset)[0]
+        result['probability'] = self.classiferModel.predict_proba(dataset)[0]
         return result
 
 def load_credit_fraud_Model():
     if os.path.exists(CREDIT_FRAUD_PICKLE):
-        print "exists"
         classifier=pickle.load(open(CREDIT_FRAUD_PICKLE,'rb'))
-        print "Loaded"
         return classifier
     else:
         print "unable to load Train file .. ! have you trained the model yet?"
