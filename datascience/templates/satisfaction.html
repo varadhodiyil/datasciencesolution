@@ -25,7 +25,7 @@
                           <span class="input-group-btn">
                             <button class="browse btn btn-primary input-lg" type="button"><i class="glyphicon glyphicon-search"></i> Browse</button>
                           </span>
-                        </div> --> 
+                        </div> -->
                          <div class="radio input-group">
                           <label><input type="radio" ng-model="CLV.type" required value="Telecom">Telecom</label>
                       </div>
@@ -61,16 +61,18 @@
             <label for="tab2"><i class="fa fa-code"></i><span>TECHNICAL</span></label>
             <section id="content1" class="tab-content">
                <p class="skl-txt-big1">
-                  In marketing, customer lifetime value (CLV or often CLTV), lifetime customer value (LCV), or life-time value (LTV) is a prediction
-                   of the net profit attributed to the entire future relationship with a customer. The prediction model can have varying levels of 
-                   sophistication and accuracy, ranging from a crude heuristic to the use of complex predictive analytics techniques.
+                  Customer satisfaction is a marketing term that measures how products or services supplied by a company meet or
+                   surpass a customer’s expectation.
+                    <br/><br/>
+                    Customer satisfaction is important because it provides marketers and business owners with a metric that they can 
+                    use to manage and improve their businesses.
                </p>
             </section>
             <section id="content2" class="tab-content">
                <p class="skl-txt-big1">
                        <pre>
                  <code>
-  curl '<script>document.write(apiURL) </script>service/clv' -X POST -H 'Content-Type: text/json' -d  <span class="code-params">'{"type":"Gaming"}'
+  curl '<script>document.write(apiURL) </script>service/satisfaction' -X POST -H 'Content-Type: text/json' -d  <span class="code-params">'{"type":"Gaming"}'
 </span>
 </code>
 </pre> 
@@ -86,6 +88,6 @@
 </div>
 {% endblock %}
 {% block extrajs%}
-<script src="{% static 'assets/scripts/clv.js' %}"></script> 
+<script src="{% static 'assets/scripts/satisfaction.js' %}"></script> 
 {% endblock %}
 

@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
-
+from django.core.mail import send_mail
 from django.shortcuts import render
 from rest_framework.parsers import JSONParser, FormParser
 from rest_framework.decorators import api_view
@@ -141,6 +141,9 @@ def loyalty(request):
 def churn(request):
     return render(request , "retention.html")
 
+def satisfaction(request):
+    return render(request , "satisfaction.html")
+
 @api_view(["GET","POST"])
 @parser_classes((JSONParser,FormParser))
 def fraudDetection(request):
@@ -273,3 +276,13 @@ def fraudDetection(request):
         resp = predict_fraud(data)
         return Response(resp)
     return render(request, "fraud-detection.html",resp)
+
+def send_email(request):
+    status = send_mail(
+    'Subject here',
+    'Here is the message.',
+    'madhan@sigmaways.com',
+    ['madhan_94@live.com'],
+    )
+    return Response(status)
+

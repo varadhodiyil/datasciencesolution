@@ -3,7 +3,7 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
-<div class="container m-t-inner" ng-app="clvApp">
+<div class="container m-t-inner" ng-app="loyaltyApp" ng-controller="postCtrl">
    <div class="row">
       <div class="col-sm-12 text-center">
          <h1 class="head-txt-1 txt-upper m-t-120 skl-clr1">Content AI </h1>
@@ -11,7 +11,7 @@
       </div>
    </div>
    <hr>
-   <div class="row" ng-controller="postCtrl">
+   <div class="row" >
       <div class="col-md-12 skl-box-outer">
          <div class="col-md-6">
             <div class="panel panel-default skl-panel1">
@@ -19,31 +19,47 @@
                <div class="panel-body">
                   <form class="form-horizontal" name="creditForm" >
                     <div class="form-group">
-                        <input type="file"  name="myfile[]"  file-model = "myFile" class="file">
+                        <!-- <input type="file"  name="myfile[]"  file-model = "myFile" class="file">
                         <div class="input-group file-upload col-xs-12">
                           <input type="text" class="form-control input-lg" disabled placeholder="Upload File">
                           <span class="input-group-btn">
                             <button class="browse btn btn-primary input-lg" type="button"><i class="glyphicon glyphicon-search"></i> Browse</button>
                           </span>
-                        </div>
+                        </div> -->
+                        <div class="radio input-group">
+                          <label><input type="radio" ng-model="Loyalty.type" required value="Telecom">Telecom</label>
+                      </div>
                       </div>
                     <div class="col-md-12 m-t-20">
-                     <button type="submit" ng-click="uploadFile()"  class="col-md-6 btn skl-btn1 pull-right txt-upper">Submit</button>
+                     <button type="submit" ng-click="submit(creditForm.$valid)"  class="btn col-md-6 pull-right skl-btn1  txt-upper">Submit</button>
                     </div>
                   </form>
                </div>
             </div>
          </div>
-         <div class="col-md-6">
-            <div class="panel panel-default skl-panel2">
-               <div class="panel-heading"><span class="skl-txt-big1">Data</span></div>
-               <div class="panel-body" style="width:502px;height:320px;">
-                  <span id="probdist" ng-bind="summary" ></span>
+
+      </div>
+   </div>
+    <div class="row" ng-show="isLoaded">
+      <div class="col-md-12 skl-box-outer">
+        <div class="col-md-6">
+          <div class="panel panel-default skl-panel2">
+            <!-- <div class="panel-heading"><span class="skl-txt-big1">Data</span></div> -->
+              <div class="panel-body" style="width:502px;height:320px;">
+                <span id="probdist_1"  style="width:502px;height:636px;"></span>
+               </div>
+            </div>
+         </div>
+        <div class="col-md-6">
+          <div class="panel panel-default skl-panel2">
+            <!-- <div class="panel-heading"><span class="skl-txt-big1">Data</span></div> -->
+              <div class="panel-body" style="width:502px;height:320px;">
+                <span id="probdist_2"  style="width:502px;height:636px;"></span>
                </div>
             </div>
          </div>
       </div>
-   </div>
+    </div>
    <div class="row">
       <div class="col-md-12">
          <h2 class="text-center m-t-40 txt-upper">How it Works</h2>
@@ -58,17 +74,20 @@
             <label for="tab2"><i class="fa fa-code"></i><span>TECHNICAL</span></label>
             <section id="content1" class="tab-content">
                <p class="skl-txt-big1">
-                  In marketing, customer lifetime value (CLV or often CLTV), lifetime customer value (LCV), or life-time value (LTV) is a prediction
-                   of the net profit attributed to the entire future relationship with a customer. The prediction model can have varying levels of 
-                   sophistication and accuracy, ranging from a crude heuristic to the use of complex predictive analytics techniques.
+                  Customer loyalty can be said to have occurred if people choose to use a particular shop or buy one particular product, 
+                  rather than use other shops or buy products made by other companies. 
+                  <br/><br/>
+                  Customers exhibit customer loyalty when they consistently purchase a certain product or brand over an extended 
+                  period of time. As an example, many customers stick to a certain travel operator due to the positive experiences 
+                  they have had with their products and services.
                </p>
             </section>
             <section id="content2" class="tab-content">
                <p class="skl-txt-big1">
                        <pre>
                  <code>
-  curl '<script>document.write(apiURL) </script>service/loyalty' -X POST -H 'Content-Type: text/csv' -F  <span class="code-params">'file=@data.csv'
-</span>
+  curl '<script>document.write(apiURL) </script>service/churn' -X POST -H 'Content-Type: text/json' -d  <span class="code-params">'{"type":"Gaming"}'
+</span>>
 </code>
 </pre> 
             </section>

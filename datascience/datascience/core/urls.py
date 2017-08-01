@@ -27,5 +27,7 @@ urlpatterns = [
     url(r'^clv/$',views.clv,name="clv"),
     url(r'^loyalty/$',views.loyalty,name="loyalty"),
     url(r'^churn/$',views.churn,name="churn"),
-    url(r'fraud-detection/$',views.fraudDetection , name= "fraud-detection")
+    url(r'fraud-detection/$',views.fraudDetection , name= "fraud-detection"),
+    url(r'contact/$' , views.send_email , name="contact"),
+    url(r'satisfaction/$' , views.satisfaction , name="satisfaction")
 ]

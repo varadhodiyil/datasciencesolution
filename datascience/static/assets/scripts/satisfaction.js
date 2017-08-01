@@ -76,7 +76,7 @@ app.controller("postCtrl", function ($scope, $http, fileUpload) {
     $scope.Retention = {};
     $scope.submit = function (isValid) {
         if (isValid) {
-            $http.post(apiURL + "service/clv", this.CLV).then(function (result) {
+            $http.post(apiURL + "service/satisfaction", this.CLV).then(function (result) {
                 $scope.summary = result.data;
                 chart_Data = result.data.data.graph1;
                 google.charts.load("current", { packages: ['corechart'] });
