@@ -213,6 +213,28 @@ $scope.products = [
             + "10 and 15% of the time, and it is a fairly common (yet scientifically unproven) belief that they have more "
             + "flavour than normal coffee beans Like Brazil nuts (a seed) and white rice, coffee beans consist mostly of endosperm."
         },
+        {
+            "product": "White bread",
+            "price": "$2.96",
+            "image": "/static/assets/images/recommender/white_bread.jpg",
+            "description": "White bread typically refers to breads made from wheat flour from which the bran and the germ "+
+                            "layers have been removed (and set aside) from the whole wheatberry as part of the flour grinding "+
+                            "or milling process, producing a light-colored flour. This milling process can give white flour a "+
+                            "longer shelf life by removing the natural oils from the whole grain. Removing the oil allows "+
+                            "products made with the flour, like white bread, to be stored for longer periods of time "+
+                            "avoiding potential rancidity"
+        },
+        {
+            "product": "Whole Wheat bread",
+            "price": "$3.96",
+            "image": "/static/assets/images/recommender/wheat_bread.jpg",
+            "description": "Whole wheat bread or wholemeal bread is a type of bread made using flour that is partly or "+
+                            "entirely milled from whole or almost-whole wheat grains, see whole-wheat flour and whole "+
+                            "grain. It is one kind of brown bread. Synonyms or near-synonyms for whole-wheat bread outside "+
+                            "the United States (e.g., the UK) are whole grain bread or wholemeal bread. Some varieties of "+
+                            "whole-wheat bread are traditionally coated with whole or cracked grains of wheat, though this "+
+                            "is mostly decorative compared to the nutritional value of a good quality loaf itself."
+        }
     ];
 });
 $(document).ready(function () {
