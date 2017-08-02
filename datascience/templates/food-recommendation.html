@@ -1,0 +1,110 @@
+
+
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="container m-t-inner" ng-app="recommenderApp" ng-controller="searchCtrl">
+   <div class="row">
+      <div class="col-sm-12 text-center">
+         <h1 class="head-txt-1 txt-upper m-t-120 skl-clr1">Content AI </h1>
+         <h4 class="skl-lett-spac">Product recommendation</h4>
+      </div>
+   </div>
+   <hr>
+   <div class="row" >
+      <div class="col-md-12 skl-box-outer">
+            <div class="col-sm-4 col-lg-4 col-md-4" ng-repeat="product in products">
+                <div class="thumbnail">
+                    {% verbatim %}
+                    <img ng-src="{{product.image}}" style="width: 320px;height: 120px;object-fit: contain;" alt="">
+                    <div class="caption">
+                        <h4 class="pull-right">{{product.price}}</h4>
+                        <h4><a target="_self" href="product?q={{product.product}}">{{product.product}}</a>
+                        </h4>
+                    {% endverbatim %}
+                    </div>
+                    <!-- <div class="ratings">
+                        <p class="pull-right">15 reviews</p>
+                        <p>
+                            <span class="glyphicon glyphicon-star"></span>
+                            <span class="glyphicon glyphicon-star"></span>
+                            <span class="glyphicon glyphicon-star"></span>
+                            <span class="glyphicon glyphicon-star"></span>
+                            <span class="glyphicon glyphicon-star"></span>
+                        </p>
+                    </div> -->
+                </div>
+            </div>
+
+      </div>
+   </div>
+    <div class="row" ng-show="isLoaded">
+      <div class="col-md-12 skl-box-outer">
+        <div class="col-md-6">
+          <div class="panel panel-default skl-panel2">
+            <!-- <div class="panel-heading"><span class="skl-txt-big1">Data</span></div> -->
+              <div class="panel-body" style="width:502px;height:320px;">
+                <span id="probdist_1"  style="width:502px;height:636px;"></span>
+               </div>
+            </div>
+         </div>
+        <div class="col-md-6">
+          <div class="panel panel-default skl-panel2">
+            <!-- <div class="panel-heading"><span class="skl-txt-big1">Data</span></div> -->
+              <div class="panel-body" style="width:502px;height:320px;">
+                <span id="probdist_2"  style="width:502px;height:636px;"></span>
+               </div>
+            </div>
+         </div>
+      </div>
+    </div>
+   <div class="row">
+      <div class="col-md-12">
+         <h2 class="text-center m-t-40 txt-upper">How it Works</h2>
+      </div>
+   </div>
+   <div class="row m-t-40">
+      <div class="col-md-12">
+         <div class="tab_container">
+            <input id="tab1" type="radio" name="tabs" checked>
+            <label for="tab1"><i class="fa fa-pencil-square-o"></i><span>NON-TECHNICAL</span></label>
+            <input id="tab2" type="radio" name="tabs">
+            <label for="tab2"><i class="fa fa-code"></i><span>TECHNICAL</span></label>
+            <section id="content1" class="tab-content">
+               <p class="skl-txt-big1">
+                  A recommender system or a recommendation system (sometimes replacing "system" with a synonym such as platform or engine) 
+                  is a subclass of information filtering system that seeks to predict the "rating" or "preference" that a user would give
+                   to an item.
+                  <br/><br/>
+                  Recommender systems typically produce a list of recommendations in one of two ways – through collaborative and
+                   content-based filtering or the personality-based approach. Collaborative filtering approaches build a model 
+                   from a user's past behaviour (items previously purchased or selected and/or numerical ratings given to those items) 
+                   as well as similar decisions made by other users. This model is then used to predict items (or ratings for items) 
+                   that the user may have an interest in.[8] Content-based filtering approaches utilize a series of discrete characteristics 
+                   of an item in order to recommend additional items with similar properties. These approaches are often 
+                   combined (see Hybrid Recommender Systems).
+               </p>
+            </section>
+            <section id="content2" class="tab-content">
+               <p class="skl-txt-big1">
+                       <pre>
+                 <code>
+  curl '<script>document.write(apiURL) </script>service/foodrecom' -X POST -H 'Content-Type: text/json' -d  <span class="code-params">'{"items":"Apple"}'
+</span>
+</code>
+</pre> 
+            </section>
+         </div>
+      </div>
+   </div>
+   <div class="row m-t-40 m-b-50">
+      <div class="col-md-12 text-center">
+         <a data-toggle="modal" data-target="#demorequest" class="btn btn-lg btn-circle skl-btn2 txt-upper col-sm-6 center-align-div">Request a custom demo</a>
+      </div>
+   </div>
+</div>
+{% endblock %}
+{% block extrajs%}
+<script src="{% static 'assets/scripts/recommender.js' %}"></script> 
+{% endblock %}
+

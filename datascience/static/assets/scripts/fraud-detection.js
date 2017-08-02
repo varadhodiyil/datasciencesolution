@@ -6,7 +6,7 @@ app.controller("postCtrl", function ($scope, $http) {
         if (isValid) {
             $(document).ready(function () 
             {
-                    divolte.signal("FraudDetection_Submit",{"query":$scope.Credit});
+                    divolte.signal("FraudDetection_Submit",{"queryString":$scope.Credit});
             });
             $http.post("#", this.Fraud).then(function (result) {
                 google.charts.load("current", { packages: ['corechart'] });

@@ -9,7 +9,7 @@ app.controller("postCtrl", function ($scope, $http)
                 $scope.summary = result.data;
                 $(document).ready(function () 
                 {
-                    divolte.signal("ner_Submit",{"query":$scope.NER});
+                    divolte.signal("ner_Submit",{"queryString":$scope.NER});
                 });
             });
         }

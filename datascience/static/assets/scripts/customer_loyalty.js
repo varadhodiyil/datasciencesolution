@@ -41,6 +41,10 @@ app.controller("postCtrl", function ($scope, $http, fileUpload) {
     $scope.submit = function (isValid) {
         if (isValid) {
              $scope.isLoaded = true;
+             $(document).ready(function () 
+            {
+                    divolte.signal("Customer_loyalty_Submit",{"queryString":this.Loyalty});
+            });
             $http.post(apiURL + "service/loyalty", this.Loyalty).then(function (result) {
                 $scope.summary = result.data;
                 chart_Data = result.data.data;

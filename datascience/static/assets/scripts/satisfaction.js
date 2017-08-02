@@ -76,21 +76,24 @@ app.controller("postCtrl", function ($scope, $http, fileUpload) {
     $scope.Retention = {};
     $scope.submit = function (isValid) {
         if (isValid) {
+            $(document).ready(function () {
+                divolte.signal("CustomerSatisFaction_submit", {"queryString":this.CLV});
+            });
             $http.post(apiURL + "service/satisfaction", this.CLV).then(function (result) {
                 $scope.summary = result.data;
                 chart_Data = result.data.data.graph1;
                 google.charts.load("current", { packages: ['corechart'] });
-                  google.charts.setOnLoadCallback(function() { drawChart(chart_Data); });
+                google.charts.setOnLoadCallback(function () { drawChart(chart_Data); });
                 function drawChart(d) {
                     // var data = google.visualization.arrayToDataTable([
                     //     ["Element", "Density", { role: "style" }],
                     // ]);
                     dataTable = new google.visualization.DataTable();
                     // dataTable.addRow(["Copper", 8.94, "#b87333"]); 
-                    dataTable.addColumn('string', 'Feature');  
-                    dataTable.addColumn('number', 'Importance'); 
-                    d.forEach(function(element) {
-                        dataTable.addRow([element.Featurename, (parseFloat(element.Importance).toFixed(2)*100  )]);
+                    dataTable.addColumn('string', 'Feature');
+                    dataTable.addColumn('number', 'Importance');
+                    d.forEach(function (element) {
+                        dataTable.addRow([element.Featurename, (parseFloat(element.Importance).toFixed(2) * 100)]);
                         // console.log
                     }, this);
 
@@ -107,4 +110,8 @@ app.controller("postCtrl", function ($scope, $http, fileUpload) {
             });
         }
     }
+});
+
+$(document).ready(function () {
+    divolte.signal("CustomerSatisFaction", {});
 });

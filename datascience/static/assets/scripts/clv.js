@@ -77,6 +77,10 @@ app.controller("postCtrl", function ($scope, $http, fileUpload) {
     $scope.submit = function (isValid) {
         if (isValid) {
             $http.post(apiURL + "service/clv", this.CLV).then(function (result) {
+                $(document).ready(function () 
+                {
+                        divolte.signal("CLV_Submit",{"queryString":$scope.CLV});
+                });
                 $scope.summary = result.data;
                 chart_Data = result.data.data.graph1;
                 google.charts.load("current", { packages: ['corechart'] });

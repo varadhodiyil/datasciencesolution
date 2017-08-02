@@ -144,6 +144,12 @@ def churn(request):
 def satisfaction(request):
     return render(request , "satisfaction.html")
 
+def recommender(request):
+    return render(request , "food-recommendation.html")
+
+def recommender_product(request):
+    return render(request , "recommender-product.html")
+
 @api_view(["GET","POST"])
 @parser_classes((JSONParser,FormParser))
 def fraudDetection(request):
