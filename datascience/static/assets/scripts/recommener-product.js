@@ -261,7 +261,7 @@ app.controller("searchCtrl", function ($scope, $http,$location)
         $http.post(apiURL+"service/foodrecom",item).then(function(result)
         {
             $scope.recommended_products = [];
-            let data = result.data.data.items;
+            let data = result.data.data;
             data.forEach(function(d)
             {
                 $scope.products.forEach(function(element)

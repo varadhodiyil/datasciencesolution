@@ -1,0 +1,78 @@
+
+
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="container m-t-inner" ng-app="claimPredictApp">
+   <div class="row">
+      <div class="col-sm-12 text-center">
+         <h1 class="head-txt-1 txt-upper m-t-120 skl-clr1">Content AI </h1>
+         <h4 class="skl-lett-spac">Claim Prediction</h4>
+      </div>
+   </div>
+   <hr>
+   <div class="row" ng-controller="claimCtrl">
+      <div class="col-md-12 skl-box-outer">
+          <div id="probdist"  style="height:636px;"> </div>
+         <!-- <div class="col-md-6">
+            <div class="panel panel-default skl-panel1">
+               <div class="panel-heading"><span class="skl-txt-big1">Language Detection</span></div>
+               <div class="panel-body">
+                  <form class="form-horizontal" name="creditForm" >
+                     <div class="form-group">
+                        <label class="col-sm-12 control-label">Content: </label>
+                        <div class="col-sm-12">
+                           <textarea  ng-model="LangDetect.text" required="true" class="form-control" rows="5" ></textarea>
+                        </div>
+                     </div>
+                    <div class="col-md-12 m-t-20">
+                     <button type="submit" ng-click="submit(creditForm.$valid)" class="btn skl-btn1 nav-justified txt-upper">LangDetect</button>
+                    </div>
+                  </form>
+               </div>
+            </div>
+         </div> -->
+      </div>
+   </div>
+   <div class="row">
+      <div class="col-md-12">
+         <h2 class="text-center m-t-40 txt-upper">How it Works</h2>
+      </div>
+   </div>
+   <div class="row m-t-40">
+      <div class="col-md-12">
+         <div class="tab_container">
+            <input id="tab1" type="radio" name="tabs" checked>
+            <label for="tab1"><i class="fa fa-pencil-square-o"></i><span>NON-TECHNICAL</span></label>
+            <input id="tab2" type="radio" name="tabs">
+            <label for="tab2"><i class="fa fa-code"></i><span>TECHNICAL</span></label>
+            <section id="content1" class="tab-content">
+               <p class="skl-txt-big1">
+                  In natural language processing, language identification or language guessing is the problem of determining 
+                  which natural language given content is in. Computational approaches to this problem view it as a special case 
+                  of text categorization, solved with various statistical methods.
+               </p>
+            </section>
+            <section id="content2" class="tab-content">
+               <p class="skl-txt-big1">
+                              <pre>
+                 <code>
+curl '<script>document.write(base)</script>/langdetect/' -H 'Content-Type: application/json'
+</code>
+</pre>
+               </p>
+            </section>
+         </div>
+      </div>
+   </div>
+   <div class="row m-t-40 m-b-50">
+      <div class="col-md-12 text-center">
+         <a data-toggle="modal" data-target="#demorequest" class="btn btn-lg btn-circle skl-btn2 txt-upper col-sm-6 center-align-div">Request a custom demo</a>
+      </div>
+   </div>
+</div>
+{% endblock %}
+{% block extrajs%}
+<script src="{% static 'assets/scripts/claim-predict.js' %}"></script> 
+{% endblock %}
+

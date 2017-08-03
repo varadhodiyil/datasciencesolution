@@ -31,5 +31,6 @@ urlpatterns = [
     url(r'contact/$' , views.send_email , name="contact"),
     url(r'satisfaction/$' , views.satisfaction , name="satisfaction"),
     url(r'recommender/$' , views.recommender , name="recommender"),
-    url(r'recommender/product/$' , views.recommender_product )
+    url(r'recommender/product/$' , views.recommender_product ),
+    url(r'claim-predict/$' , views.claim_predict , name="claim_predict" ),
 ]

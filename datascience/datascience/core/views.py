@@ -150,6 +150,9 @@ def recommender(request):
 def recommender_product(request):
     return render(request , "recommender-product.html")
 
+def claim_predict(request):
+    return render(request , "claim-predict.html")
+
 @api_view(["GET","POST"])
 @parser_classes((JSONParser,FormParser))
 def fraudDetection(request):
