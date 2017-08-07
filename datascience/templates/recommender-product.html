@@ -92,12 +92,14 @@
             </section>
             <section id="content2" class="tab-content">
                <p class="skl-txt-big1">
+                   {% verbatim %}
                        <pre>
                  <code>
-  curl '<script>document.write(apiURL) </script>service/foodrecom' -X POST -H 'Content-Type: text/json' -d  <span class="code-params">'{"items":"Apple"}'
+  curl '<script>document.write(apiURL) </script>service/foodrecom' -X POST -H 'Content-Type: application/json' -d  <span class="code-params">'{"items":"{{searched_product.product}}"}'
 </span>
 </code>
 </pre> 
+{% endverbatim %}
             </section>
          </div>
       </div>

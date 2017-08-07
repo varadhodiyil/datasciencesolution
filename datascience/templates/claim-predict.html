@@ -6,33 +6,42 @@
 <div class="container m-t-inner" ng-app="claimPredictApp">
    <div class="row">
       <div class="col-sm-12 text-center">
-         <h1 class="head-txt-1 txt-upper m-t-120 skl-clr1">Content AI </h1>
+         <h1 class="head-txt-1 txt-upper m-t-120 skl-clr1">Insurance </h1>
          <h4 class="skl-lett-spac">Claim Prediction</h4>
       </div>
    </div>
    <hr>
    <div class="row" ng-controller="claimCtrl">
-      <div class="col-md-12 skl-box-outer">
-          <div id="probdist"  style="height:636px;"> </div>
-         <!-- <div class="col-md-6">
-            <div class="panel panel-default skl-panel1">
-               <div class="panel-heading"><span class="skl-txt-big1">Language Detection</span></div>
-               <div class="panel-body">
-                  <form class="form-horizontal" name="creditForm" >
-                     <div class="form-group">
-                        <label class="col-sm-12 control-label">Content: </label>
-                        <div class="col-sm-12">
-                           <textarea  ng-model="LangDetect.text" required="true" class="form-control" rows="5" ></textarea>
-                        </div>
-                     </div>
-                    <div class="col-md-12 m-t-20">
-                     <button type="submit" ng-click="submit(creditForm.$valid)" class="btn skl-btn1 nav-justified txt-upper">LangDetect</button>
-                    </div>
-                  </form>
-               </div>
-            </div>
-         </div> -->
+<div class="col-md-12 skl-box-outer">
+      <div class="col-md-6">
+        <div class="panel panel-default skl-panel1">
+          <div class="panel-heading"><span class="skl-txt-big1">Credit Applicant Profile</span></div>
+          <div class="panel-body">
+            <form class="form-horizontal" name="creditForm" >
+              {% for x in labels %}
+              <div class="form-group">
+                <label class="col-sm-6 control-label">{{x.label}}</label>
+                <div class="col-sm-6">
+                  <input type="text" ng-model="Claim.{{x.model}}" ng-init="Claim.{{x.model}}='{{x.value}}'" required="true" class="form-control">
+                </div>
+              </div>
+              {% endfor %}
+              <div class="col-md-12 m-t-20">
+                <button type="submit" ng-click="submit(creditForm.$valid)" class="btn skl-btn1 nav-justified txt-upper">Predict Credit Risk</button>
+              </div>
+            </form>
+          </div>
+        </div>
       </div>
+      <div class="col-md-6">
+        <div class="panel panel-default skl-panel2">
+          <div class="panel-heading"><span class="skl-txt-big1">Claim Prediction</span></div>
+          <div class="panel-body">
+            <div id="probdist" style="width:502px;height:636px;"></div>
+          </div>
+        </div>
+      </div>
+    </div>
    </div>
    <div class="row">
       <div class="col-md-12">

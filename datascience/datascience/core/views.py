@@ -6,7 +6,8 @@ from rest_framework.parsers import JSONParser, FormParser
 from rest_framework.decorators import api_view
 from rest_framework.decorators import parser_classes
 from rest_framework.response import Response
-from datascience.core.resources import predict_credit_risk , predict_fraud , lang_detect
+from datascience.core.resources import predict_credit_risk , predict_fraud , lang_detect , summarize_text
+from rest_framework import status
 # Create your views here.
 credit_data = [
     {
@@ -111,8 +112,20 @@ def creditAnalyis(request):
     resp['labels']  = credit_data
     return render(request,"credit-analysis.html" , resp)
 
+@api_view(["GET","POST"])
+@parser_classes((JSONParser,FormParser))
 def summarize(request):
-    return render(request,"summarizer.html")
+    if request.method == "GET":
+        return render(request,"summarizer.html")
+    if request.method == "POST":
+        data = request.data
+        resp = dict()
+        resp['status'] = False
+        resp['message'] = " Invalid Request"
+        if "data" in  data:
+            resp = summarize_text(data['data'])
+            return Response(resp,status=status.HTTP_200_OK)
+        return Response(resp , status=status.HTTP_400_BAD_REQUEST)
 
 def ner(request):
     return render(request,"ner.html")
@@ -151,7 +164,56 @@ def recommender_product(request):
     return render(request , "recommender-product.html")
 
 def claim_predict(request):
-    return render(request , "claim-predict.html")
+    labels = [
+               {
+                    "value":6.43,
+                    "model":"veh_value",
+                    "label":"Vehicle Value"
+                },
+                {
+                    "value":0.241897754,
+                    "model":"exposure",
+                    "label" : "Exposure"
+                },
+                {
+                    "value":"STNWG",
+                    "model":"veh_body",
+                    "label":"Vehicle Body"
+                },
+                {
+                    "value":"M" ,
+                    "model":"veh_age",
+                    "label":"Vehicle Age"
+                },
+                {
+                    "value":0,
+                    "model":"gender",
+                    "label":"Gender"
+                },
+                {
+                    "value":"A",
+                    "model":"area",
+                    "label":"Area"
+                },
+                {
+                    "value":3,
+                    "model":"dr_age",
+                    "label":"DR Age"
+                },
+                {
+                    "value":0,
+                    "model":"claim_ind",
+                    "label":"Claim Ind."
+                },
+                {
+                    "value":0,
+                    "model":"claim_count",
+                    "label":"Claim Count"
+                },
+            ]
+    data = dict()
+    data['labels'] = labels
+    return render(request , "claim-predict.html" , data )
 
 @api_view(["GET","POST"])
 @parser_classes((JSONParser,FormParser))
@@ -290,7 +352,7 @@ def send_email(request):
     status = send_mail(
     'Subject here',
     'Here is the message.',
-    'madhan@sigmaways.com',
+    'varadhodiyil@gmail.com',
     ['madhan_94@live.com'],
     )
     return Response(status)

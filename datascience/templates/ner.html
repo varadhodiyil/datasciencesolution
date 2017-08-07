@@ -54,14 +54,7 @@
             <input id="tab2" type="radio" name="tabs">
             <label for="tab2"><i class="fa fa-code"></i><span>TECHNICAL</span></label>
             <section id="content1" class="tab-content">
-               <p class="skl-txt-big1">
-                  Named-entity recognition (NER) (also known as entity identification, entity chunking and entity extraction) is a subtask of 
-                  information extraction that seeks to locate and classify named entities in text into pre-defined categories such as the names of persons, 
-                  organizations, locations, expressions of times, quantities, monetary values, percentages, etc.
-               </p>
-            </section>
-            <section id="content2" class="tab-content">
-               <p class="skl-txt-big1">
+              <p class="skl-txt-big1">
                   NER systems have been created that use linguistic grammar-based techniques as well as statistical models, i.e. machine learning.
                    Hand-crafted grammar-based systems typically obtain better precision, but at the cost of lower recall and months of work by 
                    experienced computational linguists[citation needed]. Statistical NER systems typically require a large amount of manually 
@@ -70,6 +63,15 @@
                   <p class="skl-txt-big1">
                   Many different classifier types have been used to perform machine-learned NER, with conditional random fields being a typical choice
                </p>
+            </section>
+            <section id="content2" class="tab-content">
+                   <pre>
+                 <code>
+curl '<script>document.write(apiURL)</script>service/ner' -H 'Content-Type: application/json'\
+ --data <span class="code-params">'{"data":"Game of Thrones is an American fantasy drama television series created by David Benioff and D. B. Weiss. It is an adaptation of A Song of Ice and Fire, George R. R. Martins series of fantasy novels, the first of which is A Game of Thrones. It is filmed in Belfast and elsewhere in the United Kingdom, Canada, Croatia, Iceland, Malta, Morocco, Spain, and the United States. The series premiered on HBO in the United States on April 17, 2011, and its sixth season ended on June 26, 2016. The series was renewed for a seventh season,which premiered on July 16, 2017, and will conclude with its eighth season in 2018 or 2019"}'
+</span>
+</code>
+</pre>
             </section>
          </div>
       </div>

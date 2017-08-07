@@ -7,7 +7,7 @@ app.controller("postCtrl", function ($scope, $http)
             $(document).ready(function () {
                 divolte.signal("Summarizer_Submit",{"queryString":this.Summarize});
             });
-            $http.post("summarize/", this.Summarize).then(function (result) 
+            $http.post("#", this.Summarize).then(function (result) 
             {
                 $scope.summary = result.data;
             });

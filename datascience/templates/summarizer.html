@@ -35,7 +35,11 @@
             <div class="panel panel-default skl-panel2">
                <div class="panel-heading"><span class="skl-txt-big1">Summary</span></div>
                <div class="panel-body">
-                  <span id="probdist" ng-bind="summary" style="width:502px;height:636px;"></span>
+                  <span id="probdist"  style="width:502px;height:636px;"></span>
+                  {% verbatim %}
+                  <p class="skl-txt-big1" ng-cloak="">{{summary.summary}}</p>
+                  <p ng-cloak ng-repeat="(key,val) in summary.report">{{key + " : "}} {{val}}</p>
+                  {% endverbatim %}
                </div>
             </div>
          </div>
@@ -68,8 +72,13 @@
             </section>
             <section id="content2" class="tab-content">
                <p class="skl-txt-big1">
-                  Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries.<br><br>
-                  Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries,
+                  <pre>
+                 <code>
+  curl '<script>document.write(base) </script>/summarize/' -X POST -H 'Content-Type: application/json'\
+     --data  <span class="code-params">'{"data":"Game of Thrones is an American fantasy drama television series created by David Benioff and D. B. Weiss. It is an adaptation of A Song of Ice and Fire, George R. R. Martins series of fantasy novels, the first of which is A Game of Thrones. It is filmed in Belfast and elsewhere in the United Kingdom, Canada, Croatia, Iceland, Malta, Morocco, Spain, and the United States. The series premiered on HBO in the United States on April 17, 2011, and its sixth season ended on June 26, 2016. The series was renewed for a seventh season,which premiered on July 16, 2017, and will conclude with its eighth season in 2018 or 2019"}'
+</span>
+</code>
+</pre> 
                </p>
             </section>
          </div>
