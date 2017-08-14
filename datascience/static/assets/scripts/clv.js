@@ -115,3 +115,14 @@ app.controller("postCtrl", function ($scope, $http, fileUpload) {
         }
     }
 });
+$(document).ready(function () {
+    divolte.signal("CLV",{});
+});
+$(document).ready(function(){
+    $('#clv').DataTable(
+        {
+            // scrollX : true,
+            searching: false
+        }
+    );
+});

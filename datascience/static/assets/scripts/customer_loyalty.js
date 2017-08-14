@@ -95,9 +95,6 @@ app.controller("postCtrl", function ($scope, $http, fileUpload) {
                 }
             });
         }
-        else{
-            console.log("no")
-        }
     }
 });
 
@@ -105,4 +102,10 @@ app.controller("postCtrl", function ($scope, $http, fileUpload) {
 $(document).ready(function () 
 {
     divolte.signal("customerLoyalty",{});
+    $('#clv').DataTable(
+        {
+            // scrollX : true,
+            searching: false
+        }
+    );
 });

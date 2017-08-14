@@ -1,95 +1,621 @@
-
-
-{% extends 'base.html' %}
-{% load static %}
-{% block content %}
+ {% extends 'base.html' %} {% load static %} {% block content %}
 <div class="container m-t-inner" ng-app="clvApp">
-   <div class="row">
-      <div class="col-sm-12 text-center">
-         <h1 class="head-txt-1 txt-upper m-t-120 skl-clr1">Content AI </h1>
-         <h4 class="skl-lett-spac">Customer Retention</h4>
-      </div>
-   </div>
-   <hr>
-   <div class="row" ng-controller="postCtrl">
-      <div class="col-md-12 skl-box-outer">
-         <div class="col-md-6">
-            <div class="panel panel-default skl-panel1">
-               <div class="panel-heading"><span class="skl-txt-big1">Customer Retention</span></div>
-               <div class="panel-body">
-                  <form class="form-horizontal" name="creditForm" >
-                    <div class="form-group">
-                        <!-- <input type="file"  name="myfile"  id="myFile" file-model = "myFile" class="file">
+  <div class="row">
+    <div class="col-sm-12 text-center">
+      <h1 class="head-txt-1 txt-upper m-t-120 skl-clr1">Content AI </h1>
+      <h4 class="skl-lett-spac">Customer Retention</h4>
+    </div>
+  </div>
+  <hr>
+  <div class="row" ng-controller="postCtrl">
+    <div class="col-md-12 skl-box-outer">
+      <div class="col-md-6">
+        <div class="panel panel-default skl-panel1">
+          <div class="panel-heading"><span class="skl-txt-big1">Customer Retention</span></div>
+          <div class="panel-body">
+            <form class="form-horizontal" name="creditForm">
+              <div class="form-group">
+                <!-- <input type="file"  name="myfile"  id="myFile" file-model = "myFile" class="file">
                         <div class="input-group file-upload col-xs-12">
                           <input type="text" class="form-control input-lg" disabled placeholder="Upload File">
                           <span class="input-group-btn">
                             <button class="browse btn btn-primary input-lg" type="button"><i class="glyphicon glyphicon-search"></i> Browse</button>
                           </span>
                         </div> -->
-                       <div class="radio input-group">
-                          <label><input type="radio" ng-model="Retention.type"  value="Telecom">Telecom</label>
-                      </div>
-                        <div class="radio input-group">
-                          <label><input type="radio" ng-model="Retention.type"  value="Gaming">Gaming</label>
-                      </div>
-                      </div>
-                    <div class="col-md-12 m-t-20">
-                     <button type="submit" ng-click="submit(creditForm.$valid)"  class="col-md-6 btn skl-btn1 pull-right txt-upper">Submit</button>
-                    </div>
-                  </form>
-               </div>
-            </div>
-         </div>
-         <div class="col-md-6">
-            <div class="panel panel-default skl-panel2">
-               <div class="panel-heading"><span class="skl-txt-big1">Data</span></div>
-               <div class="panel-body" style="width:502px;height:320px;">
-                  <div id="probdist" style="width:502px;height:320px;" ></span>
-               </div>
-            </div>
-         </div>
+                <div class="radio input-group">
+                  <label><input type="radio" ng-model="Retention.type"  value="Telecom">Telecom</label>
+                </div>
+                <div class="radio input-group">
+                  <label><input type="radio" ng-model="Retention.type"  value="Gaming">Gaming</label>
+                </div>
+              </div>
+              <div class="col-md-12 m-t-20">
+                <button type="submit" ng-click="submit(creditForm.$valid)" class="col-md-6 btn skl-btn1 pull-right txt-upper">Submit</button>
+              </div>
+            </form>
+          </div>
+        </div>
       </div>
-   </div>
-   <div class="row">
-      <div class="col-md-12">
-         <h2 class="text-center m-t-40 txt-upper">How it Works</h2>
+      <div class="col-md-6">
+        <div class="panel panel-default skl-panel2">
+          <div class="panel-heading"><span class="skl-txt-big1">Data</span></div>
+          <div class="panel-body" style="width:502px;height:320px;">
+            <div id="probdist" style="width:502px;height:320px;">
+              </span>
+            </div>
+          </div>
+        </div>
       </div>
-   </div>
-   <div class="row m-t-40">
+    </div>
+    <div class="row">
       <div class="col-md-12">
-         <div class="tab_container">
-            <input id="tab1" type="radio" name="tabs" checked>
-            <label for="tab1"><i class="fa fa-pencil-square-o"></i><span>NON-TECHNICAL</span></label>
-            <input id="tab2" type="radio" name="tabs">
-            <label for="tab2"><i class="fa fa-code"></i><span>TECHNICAL</span></label>
-            <section id="content1" class="tab-content">
-               <p class="skl-txt-big1">
-                  Customer retention refers to the activities and actions companies and organizations take to reduce the number of 
-                  customer defections. The goal of customer retention programs is to help companies retain as many customers as possible, 
-                  often through customer loyalty and brand loyalty initiatives. It is important to remember 
-                   that customer retention begins with the first contact a customer has with a company and continues throughout the entire lifetime of the relationship.
-               </p>
-            </section>
-            <section id="content2" class="tab-content">
-               <p class="skl-txt-big1">
-                       <pre>
+        <h2 class="text-center m-t-40 txt-upper">How it Works</h2>
+      </div>
+    </div>
+    <div class="row m-t-40">
+      <div class="col-md-12">
+        <div class="tab_container">
+          <input id="tab1" type="radio" name="tabs" checked>
+          <label for="tab1"><i class="fa fa-pencil-square-o"></i><span>NON-TECHNICAL</span></label>
+          <input id="tab2" type="radio" name="tabs">
+          <label for="tab2"><i class="fa fa-code"></i><span>TECHNICAL</span></label>
+          <input id="tab3" type="radio" name="tabs">
+          <label for="tab3"><i class="fa fa-table"></i><span>Sample Data</span></label>
+          <section id="content1" class="tab-content">
+            <p class="skl-txt-big1">
+              Customer retention refers to the activities and actions companies and organizations take to reduce the number of customer
+              defections. The goal of customer retention programs is to help companies retain as many customers as possible,
+              often through customer loyalty and brand loyalty initiatives. It is important to remember that customer retention
+              begins with the first contact a customer has with a company and continues throughout the entire lifetime of
+              the relationship.
+            </p>
+          </section>
+          <section id="content2" class="tab-content">
+            <p class="skl-txt-big1">
+              <pre>
                  <code>
   curl '<script>document.write(apiURL) </script>service/churn' -X POST -H 'Content-Type: application/json' -d  <span class="code-params">'{"type":"Gaming"}'
 </span>
 </code>
-</pre> 
-            </section>
-         </div>
+</pre>
+          </section>
+          <section id="content3" class="tab-content">
+            <table id="clv" class="table table-bordered table-hover table-condensed">
+              <thead>
+                <tr>
+                  <th title="Field #1">UserID</th>
+                  <th title="Field #2">AccountLength</th>
+                  <th title="Field #3">Purchase number</th>
+                  <th title="Field #4">Monthly purchases</th>
+                  <th title="Field #5">Purchase amount</th>
+                  <th title="Field #6">DLC</th>
+                  <th title="Field #7">DLC Amount</th>
+                  <th title="Field #8">Total playing time</th>
+                  <th title="Field #9">Weekly playing time</th>
+                  <th title="Field #10">Support Tickets</th>
+                  <th title="Field #11">Resolved Support Tickets</th>
+                  <th title="Field #12">Age</th>
+                  <th title="Field #13">Sex</th>
+                  <th title="Field #14">RPGs Bought</th>
+                  <th title="Field #15">Shooters Bought</th>
+                  <th title="Field #16">Adventure Games Bought</th>
+                  <th title="Field #17">Action Games Bought</th>
+                  <th title="Field #18">Sports Games Bought</th>
+                  <th title="Field #19">Fighting Games Bought</th>
+                  <th title="Field #20">Simulation Games Bought</th>
+                  <th title="Field #21">Strategy Games Bought</th>
+                  <th title="Field #22">Logic Games Bought</th>
+                  <th title="Field #23">Music Games Bought</th>
+                  <th title="Field #24">Churn</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td align="right">0</td>
+                  <td align="right">113</td>
+                  <td align="right">41</td>
+                  <td align="right">3.42</td>
+                  <td align="right">1580</td>
+                  <td>1</td>
+                  <td align="right">1260</td>
+                  <td align="right">75.21</td>
+                  <td align="right">1.45</td>
+                  <td align="right">39</td>
+                  <td align="right">22</td>
+                  <td align="right">20</td>
+                  <td>0</td>
+                  <td align="right">2</td>
+                  <td align="right">5</td>
+                  <td align="right">3</td>
+                  <td align="right">2</td>
+                  <td align="right">7</td>
+                  <td align="right">2</td>
+                  <td align="right">5</td>
+                  <td align="right">2</td>
+                  <td align="right">4</td>
+                  <td align="right">0</td>
+                  <td>1</td>
+                </tr>
+                <tr>
+                  <td align="right">1</td>
+                  <td align="right">48</td>
+                  <td align="right">3</td>
+                  <td align="right">0.25</td>
+                  <td align="right">160</td>
+                  <td>1</td>
+                  <td align="right">2580</td>
+                  <td align="right">67.5</td>
+                  <td align="right">1.3</td>
+                  <td align="right">0</td>
+                  <td align="right">0</td>
+                  <td align="right">21</td>
+                  <td>0</td>
+                  <td align="right">7</td>
+                  <td align="right">4</td>
+                  <td align="right">5</td>
+                  <td align="right">7</td>
+                  <td align="right">4</td>
+                  <td align="right">4</td>
+                  <td align="right">5</td>
+                  <td align="right">4</td>
+                  <td align="right">3</td>
+                  <td align="right">3</td>
+                  <td>1</td>
+                </tr>
+                <tr>
+                  <td align="right">3</td>
+                  <td align="right">97</td>
+                  <td align="right">28</td>
+                  <td align="right">2.33</td>
+                  <td align="right">1100</td>
+                  <td>1</td>
+                  <td align="right">360</td>
+                  <td align="right">41.31</td>
+                  <td align="right">0.79</td>
+                  <td align="right">0</td>
+                  <td align="right">0</td>
+                  <td align="right">30</td>
+                  <td>0</td>
+                  <td align="right">1</td>
+                  <td align="right">1</td>
+                  <td align="right">3</td>
+                  <td align="right">1</td>
+                  <td align="right">7</td>
+                  <td align="right">3</td>
+                  <td align="right">2</td>
+                  <td align="right">2</td>
+                  <td align="right">0</td>
+                  <td align="right">1</td>
+                  <td>1</td>
+                </tr>
+                <tr>
+                  <td align="right">4</td>
+                  <td align="right">169</td>
+                  <td align="right">47</td>
+                  <td align="right">3.92</td>
+                  <td align="right">2100</td>
+                  <td>1</td>
+                  <td align="right">180</td>
+                  <td align="right">963</td>
+                  <td align="right">18.52</td>
+                  <td align="right">0</td>
+                  <td align="right">0</td>
+                  <td align="right">26</td>
+                  <td>0</td>
+                  <td align="right">1</td>
+                  <td align="right">4</td>
+                  <td align="right">5</td>
+                  <td align="right">5</td>
+                  <td align="right">0</td>
+                  <td align="right">4</td>
+                  <td align="right">4</td>
+                  <td align="right">4</td>
+                  <td align="right">7</td>
+                  <td align="right">3</td>
+                  <td>0</td>
+                </tr>
+                <tr>
+                  <td align="right">5</td>
+                  <td align="right">224</td>
+                  <td align="right">5</td>
+                  <td align="right">0.42</td>
+                  <td align="right">120</td>
+                  <td>1</td>
+                  <td align="right">1260</td>
+                  <td align="right">823.31</td>
+                  <td align="right">15.83</td>
+                  <td align="right">14</td>
+                  <td align="right">9</td>
+                  <td align="right">18</td>
+                  <td>0</td>
+                  <td align="right">5</td>
+                  <td align="right">7</td>
+                  <td align="right">1</td>
+                  <td align="right">5</td>
+                  <td align="right">6</td>
+                  <td align="right">1</td>
+                  <td align="right">6</td>
+                  <td align="right">2</td>
+                  <td align="right">1</td>
+                  <td align="right">7</td>
+                  <td>0</td>
+                </tr>
+                <tr>
+                  <td align="right">6</td>
+                  <td align="right">272</td>
+                  <td align="right">8</td>
+                  <td align="right">0.67</td>
+                  <td align="right">300</td>
+                  <td>1</td>
+                  <td align="right">2880</td>
+                  <td align="right">980.53</td>
+                  <td align="right">18.86</td>
+                  <td align="right">0</td>
+                  <td align="right">0</td>
+                  <td align="right">32</td>
+                  <td>0</td>
+                  <td align="right">7</td>
+                  <td align="right">6</td>
+                  <td align="right">7</td>
+                  <td align="right">3</td>
+                  <td align="right">1</td>
+                  <td align="right">5</td>
+                  <td align="right">1</td>
+                  <td align="right">3</td>
+                  <td align="right">1</td>
+                  <td align="right">7</td>
+                  <td>0</td>
+                </tr>
+                <tr>
+                  <td align="right">7</td>
+                  <td align="right">351</td>
+                  <td align="right">36</td>
+                  <td align="right">3</td>
+                  <td align="right">1460</td>
+                  <td>1</td>
+                  <td align="right">60</td>
+                  <td align="right">1615.74</td>
+                  <td align="right">31.07</td>
+                  <td align="right">6</td>
+                  <td align="right">4</td>
+                  <td align="right">27</td>
+                  <td>0</td>
+                  <td align="right">5</td>
+                  <td align="right">7</td>
+                  <td align="right">4</td>
+                  <td align="right">2</td>
+                  <td align="right">7</td>
+                  <td align="right">6</td>
+                  <td align="right">4</td>
+                  <td align="right">5</td>
+                  <td align="right">1</td>
+                  <td align="right">1</td>
+                  <td>0</td>
+                </tr>
+                <tr>
+                  <td align="right">10</td>
+                  <td align="right">348</td>
+                  <td align="right">21</td>
+                  <td align="right">1.75</td>
+                  <td align="right">900</td>
+                  <td>0</td>
+                  <td align="right">0</td>
+                  <td align="right">931.34</td>
+                  <td align="right">17.91</td>
+                  <td align="right">0</td>
+                  <td align="right">0</td>
+                  <td align="right">34</td>
+                  <td>0</td>
+                  <td align="right">1</td>
+                  <td align="right">0</td>
+                  <td align="right">3</td>
+                  <td align="right">1</td>
+                  <td align="right">5</td>
+                  <td align="right">6</td>
+                  <td align="right">2</td>
+                  <td align="right">0</td>
+                  <td align="right">1</td>
+                  <td align="right">6</td>
+                  <td>1</td>
+                </tr>
+                <tr>
+                  <td align="right">11</td>
+                  <td align="right">247</td>
+                  <td align="right">39</td>
+                  <td align="right">3.25</td>
+                  <td align="right">1700</td>
+                  <td>1</td>
+                  <td align="right">2100</td>
+                  <td align="right">1015.75</td>
+                  <td align="right">19.53</td>
+                  <td align="right">0</td>
+                  <td align="right">0</td>
+                  <td align="right">16</td>
+                  <td>0</td>
+                  <td align="right">2</td>
+                  <td align="right">3</td>
+                  <td align="right">5</td>
+                  <td align="right">5</td>
+                  <td align="right">2</td>
+                  <td align="right">7</td>
+                  <td align="right">0</td>
+                  <td align="right">7</td>
+                  <td align="right">3</td>
+                  <td align="right">2</td>
+                  <td>0</td>
+                </tr>
+                <tr>
+                  <td align="right">12</td>
+                  <td align="right">237</td>
+                  <td align="right">20</td>
+                  <td align="right">1.67</td>
+                  <td align="right">760</td>
+                  <td>1</td>
+                  <td align="right">180</td>
+                  <td align="right">1489.39</td>
+                  <td align="right">28.64</td>
+                  <td align="right">11</td>
+                  <td align="right">5</td>
+                  <td align="right">17</td>
+                  <td>0</td>
+                  <td align="right">6</td>
+                  <td align="right">5</td>
+                  <td align="right">3</td>
+                  <td align="right">7</td>
+                  <td align="right">5</td>
+                  <td align="right">0</td>
+                  <td align="right">1</td>
+                  <td align="right">4</td>
+                  <td align="right">3</td>
+                  <td align="right">0</td>
+                  <td>0</td>
+                </tr>
+                <tr>
+                  <td align="right">13</td>
+                  <td align="right">110</td>
+                  <td align="right">11</td>
+                  <td align="right">0.92</td>
+                  <td align="right">440</td>
+                  <td>1</td>
+                  <td align="right">2940</td>
+                  <td align="right">1039.93</td>
+                  <td align="right">20</td>
+                  <td align="right">0</td>
+                  <td align="right">0</td>
+                  <td align="right">24</td>
+                  <td>0</td>
+                  <td align="right">0</td>
+                  <td align="right">4</td>
+                  <td align="right">0</td>
+                  <td align="right">7</td>
+                  <td align="right">7</td>
+                  <td align="right">2</td>
+                  <td align="right">2</td>
+                  <td align="right">2</td>
+                  <td align="right">1</td>
+                  <td align="right">5</td>
+                  <td>0</td>
+                </tr>
+                <tr>
+                  <td align="right">14</td>
+                  <td align="right">300</td>
+                  <td align="right">1</td>
+                  <td align="right">0.08</td>
+                  <td align="right">40</td>
+                  <td>1</td>
+                  <td align="right">2160</td>
+                  <td align="right">1218.7</td>
+                  <td align="right">23.44</td>
+                  <td align="right">1</td>
+                  <td align="right">1</td>
+                  <td align="right">35</td>
+                  <td>0</td>
+                  <td align="right">7</td>
+                  <td align="right">2</td>
+                  <td align="right">3</td>
+                  <td align="right">6</td>
+                  <td align="right">1</td>
+                  <td align="right">3</td>
+                  <td align="right">3</td>
+                  <td align="right">6</td>
+                  <td align="right">4</td>
+                  <td align="right">0</td>
+                  <td>0</td>
+                </tr>
+                <tr>
+                  <td align="right">15</td>
+                  <td align="right">172</td>
+                  <td align="right">44</td>
+                  <td align="right">3.67</td>
+                  <td align="right">1780</td>
+                  <td>0</td>
+                  <td align="right">0</td>
+                  <td align="right">1275.43</td>
+                  <td align="right">24.53</td>
+                  <td align="right">26</td>
+                  <td align="right">25</td>
+                  <td align="right">28</td>
+                  <td>0</td>
+                  <td align="right">3</td>
+                  <td align="right">6</td>
+                  <td align="right">4</td>
+                  <td align="right">5</td>
+                  <td align="right">6</td>
+                  <td align="right">6</td>
+                  <td align="right">4</td>
+                  <td align="right">4</td>
+                  <td align="right">6</td>
+                  <td align="right">3</td>
+                  <td>0</td>
+                </tr>
+                <tr>
+                  <td align="right">17</td>
+                  <td align="right">358</td>
+                  <td align="right">41</td>
+                  <td align="right">3.42</td>
+                  <td align="right">1680</td>
+                  <td>1</td>
+                  <td align="right">2760</td>
+                  <td align="right">1560.03</td>
+                  <td align="right">30</td>
+                  <td align="right">31</td>
+                  <td align="right">12</td>
+                  <td align="right">20</td>
+                  <td>0</td>
+                  <td align="right">5</td>
+                  <td align="right">4</td>
+                  <td align="right">7</td>
+                  <td align="right">4</td>
+                  <td align="right">2</td>
+                  <td align="right">0</td>
+                  <td align="right">6</td>
+                  <td align="right">1</td>
+                  <td align="right">1</td>
+                  <td align="right">4</td>
+                  <td>0</td>
+                </tr>
+                <tr>
+                  <td align="right">18</td>
+                  <td align="right">101</td>
+                  <td align="right">42</td>
+                  <td align="right">3.5</td>
+                  <td align="right">1780</td>
+                  <td>0</td>
+                  <td align="right">0</td>
+                  <td align="right">182.44</td>
+                  <td align="right">3.51</td>
+                  <td align="right">0</td>
+                  <td align="right">0</td>
+                  <td align="right">31</td>
+                  <td>1</td>
+                  <td align="right">1</td>
+                  <td align="right">3</td>
+                  <td align="right">7</td>
+                  <td align="right">4</td>
+                  <td align="right">5</td>
+                  <td align="right">4</td>
+                  <td align="right">2</td>
+                  <td align="right">4</td>
+                  <td align="right">2</td>
+                  <td align="right">4</td>
+                  <td>1</td>
+                </tr>
+                <tr>
+                  <td align="right">20</td>
+                  <td align="right">186</td>
+                  <td align="right">34</td>
+                  <td align="right">2.83</td>
+                  <td align="right">1520</td>
+                  <td>0</td>
+                  <td align="right">0</td>
+                  <td align="right">1470.95</td>
+                  <td align="right">28.29</td>
+                  <td align="right">0</td>
+                  <td align="right">0</td>
+                  <td align="right">18</td>
+                  <td>0</td>
+                  <td align="right">4</td>
+                  <td align="right">3</td>
+                  <td align="right">5</td>
+                  <td align="right">5</td>
+                  <td align="right">7</td>
+                  <td align="right">6</td>
+                  <td align="right">0</td>
+                  <td align="right">5</td>
+                  <td align="right">4</td>
+                  <td align="right">1</td>
+                  <td>0</td>
+                </tr>
+                <tr>
+                  <td align="right">21</td>
+                  <td align="right">157</td>
+                  <td align="right">3</td>
+                  <td align="right">0.25</td>
+                  <td align="right">100</td>
+                  <td>0</td>
+                  <td align="right">0</td>
+                  <td align="right">1948.48</td>
+                  <td align="right">37.47</td>
+                  <td align="right">0</td>
+                  <td align="right">0</td>
+                  <td align="right">16</td>
+                  <td>1</td>
+                  <td align="right">1</td>
+                  <td align="right">1</td>
+                  <td align="right">4</td>
+                  <td align="right">7</td>
+                  <td align="right">0</td>
+                  <td align="right">2</td>
+                  <td align="right">5</td>
+                  <td align="right">5</td>
+                  <td align="right">7</td>
+                  <td align="right">4</td>
+                  <td>1</td>
+                </tr>
+                <tr>
+                  <td align="right">23</td>
+                  <td align="right">300</td>
+                  <td align="right">22</td>
+                  <td align="right">1.83</td>
+                  <td align="right">800</td>
+                  <td>1</td>
+                  <td align="right">1260</td>
+                  <td align="right">1081.99</td>
+                  <td align="right">20.81</td>
+                  <td align="right">34</td>
+                  <td align="right">25</td>
+                  <td align="right">34</td>
+                  <td>0</td>
+                  <td align="right">0</td>
+                  <td align="right">1</td>
+                  <td align="right">3</td>
+                  <td align="right">3</td>
+                  <td align="right">2</td>
+                  <td align="right">2</td>
+                  <td align="right">6</td>
+                  <td align="right">5</td>
+                  <td align="right">5</td>
+                  <td align="right">1</td>
+                  <td>0</td>
+                </tr>
+                <tr>
+                  <td align="right">24</td>
+                  <td align="right">330</td>
+                  <td align="right">20</td>
+                  <td align="right">1.67</td>
+                  <td align="right">860</td>
+                  <td>1</td>
+                  <td align="right">240</td>
+                  <td align="right">959.83</td>
+                  <td align="right">18.46</td>
+                  <td align="right">17</td>
+                  <td align="right">1</td>
+                  <td align="right">22</td>
+                  <td>0</td>
+                  <td align="right">0</td>
+                  <td align="right">1</td>
+                  <td align="right">5</td>
+                  <td align="right">1</td>
+                  <td align="right">1</td>
+                  <td align="right">3</td>
+                  <td align="right">7</td>
+                  <td align="right">7</td>
+                  <td align="right">0</td>
+                  <td align="right">2</td>
+                  <td>1</td>
+                </tr>
+              </tbody>
+            </table>
+          </section>
+        </div>
       </div>
-   </div>
-   <div class="row m-t-40 m-b-50">
+    </div>
+    <div class="row m-t-40 m-b-50">
       <div class="col-md-12 text-center">
-         <a data-toggle="modal" data-target="#demorequest" class="btn btn-lg btn-circle skl-btn2 txt-upper col-sm-6 center-align-div">Request a custom demo</a>
+        <a data-toggle="modal" data-target="#demorequest" class="btn btn-lg btn-circle skl-btn2 txt-upper col-sm-6 center-align-div">Request a custom demo</a>
       </div>
-   </div>
-</div>
-{% endblock %}
-{% block extrajs%}
-<script src="{% static 'assets/scripts/retention.js' %}"></script> 
-{% endblock %}
-
+    </div>
+  </div>
+  {% endblock %} {% block extrajs%}
+  <script src="{% static 'assets/scripts/retention.js' %}"></script>
+  {% endblock %}

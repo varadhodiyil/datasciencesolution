@@ -17,7 +17,7 @@ from django.conf.urls import url ,include
 from datascience.core import views
 
 urlpatterns = [
-    url(r'^$', views.home),
+    url(r'^$', views.home , name="home"),
     url(r'^credit/$', views.creditAnalyis ,name="credit-analysis"),
     url(r'^credit/predit/$', views.creditPredict ,name="credit-predit"),
     url(r'^summarize/$',views.summarize,name="summarize"),

@@ -119,3 +119,11 @@ app.controller("postCtrl", function ($scope, $http, fileUpload) {
 $(document).ready(function () {
     divolte.signal("Retention",{});
 });
+$(document).ready(function(){
+    $('#clv').DataTable(
+        {
+            scrollX : true,
+            searching: false
+        }
+    );
+});

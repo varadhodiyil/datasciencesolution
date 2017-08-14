@@ -114,4 +114,10 @@ app.controller("postCtrl", function ($scope, $http, fileUpload) {
 
 $(document).ready(function () {
     divolte.signal("CustomerSatisFaction", {});
+    $('#clv').DataTable(
+        {
+            scrollX : true,
+            searching: false
+        }
+    );
 });
