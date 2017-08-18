@@ -1,0 +1,79 @@
+
+
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="container m-t-inner" ng-app="clickStreamApp">
+   <div class="row">
+      <div class="col-sm-12 text-center">
+         <h1 class="head-txt-1 txt-upper m-t-120 skl-clr1">Click Analytics </h1>
+         <h4 class="skl-lett-spac">Sentment Analysis</h4>
+      </div>
+   </div>
+   <hr>
+   <div class="row" ng-controller="postCtrl">
+      <div class="col-md-12 skl-box-outer">
+         <div class="col-md-6">
+            <div class="panel panel-default skl-panel1">
+               <div class="panel-heading"><span class="skl-txt-big1">Visits</span></div>
+               <div class="panel-body" style="width:502px;height:636px;">
+                   <span id="main_1" ng-bind="summary" style="width:502px;height:636px;"></span>
+               </div>
+            </div>
+         </div>
+         <div class="col-md-6">
+            <div class="panel panel-default skl-panel2">
+               <div class="panel-heading"><span class="skl-txt-big1">Events</span></div>
+               <div class="panel-body" style="width:502px;height:636px;">
+                  <span id="main_2" ng-bind="summary" style="width:502px;height:636px;"></span>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+   <div class="row">
+      <div class="col-md-12">
+         <h2 class="text-center m-t-40 txt-upper">How it Works</h2>
+      </div>
+   </div>
+   <div class="row m-t-40">
+      <div class="col-md-12">
+         <div class="tab_container">
+            <input id="tab1" type="radio" name="tabs" checked>
+            <label for="tab1"><i class="fa fa-pencil-square-o"></i><span>NON-TECHNICAL</span></label>
+            <input id="tab2" type="radio" name="tabs">
+            <label for="tab2"><i class="fa fa-code"></i><span>TECHNICAL</span></label>
+            <section id="content1" class="tab-content">
+               <p class="skl-txt-big1">
+                  Sentiment analysis (sometimes known as opinion mining or emotion AI) refers to the use of natural language processing,
+                   text analysis, computational linguistics, and biometrics to systematically identify, extract, quantify, and study 
+                   affective states and subjective information. Sentiment analysis is widely applied to voice of the customer materials 
+                   such as reviews and survey responses, online and social media, and healthcare materials for applications that range 
+                   from marketing to customer service to clinical medicine.
+               </p>
+            </section>
+            <section id="content2" class="tab-content">
+               <p class="skl-txt-big1">
+                                         <pre>
+                 <code>
+  curl '<script>document.write(apiURL) </script>service/sentiment' -X POST -H 'Content-Type: application/json'\
+     --data  <span class="code-params">'{"data":"Game of Thrones is an American fantasy drama television series created by David Benioff and D. B. Weiss. It is an adaptation of A Song of Ice and Fire, George R. R. Martins series of fantasy novels, the first of which is A Game of Thrones. It is filmed in Belfast and elsewhere in the United Kingdom, Canada, Croatia, Iceland, Malta, Morocco, Spain, and the United States. The series premiered on HBO in the United States on April 17, 2011, and its sixth season ended on June 26, 2016. The series was renewed for a seventh season,which premiered on July 16, 2017, and will conclude with its eighth season in 2018 or 2019"}'
+</span>
+</code>
+</pre> 
+               </p>
+            </section>
+         </div>
+      </div>
+   </div>
+   <div class="row m-t-40 m-b-50">
+      <div class="col-md-12 text-center">
+         <a data-toggle="modal" data-target="#demorequest" class="btn btn-lg btn-circle skl-btn2 txt-upper col-sm-6 center-align-div">Request a custom demo</a>
+      </div>
+   </div>
+</div>
+{% endblock %}
+{% block extrajs%}
+<script src="{% static 'assets/scripts/click-stream.js' %}"></script> 
+{% endblock %}
+

@@ -1,0 +1,13 @@
+{
+  "average_visit": {
+    "127.0.0.1": "07:56:17"
+  }, 
+  "distinctEvents": {
+    "SentimentAnalysis": 2, 
+    "bannerClick": 7, 
+    "pageView": 13, 
+    "CreditAnalysis": 7
+  }, 
+  "visits": 29, 
+  "unique_visits": 1
+}

@@ -33,4 +33,6 @@ urlpatterns = [
     url(r'recommender/$' , views.recommender , name="recommender"),
     url(r'recommender/product/$' , views.recommender_product ),
     url(r'claim-predict/$' , views.claim_predict , name="claim_predict" ),
+    url(r'click-stream/$' , views.click_stream , name="click_stream" ),
+    url(r'clickstream/' , views.click_stream_data , name="click_stream_data" ),
 ]

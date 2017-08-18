@@ -16,7 +16,7 @@ app.controller("searchCtrl", function ($scope, $http,$location)
             "description": "Milk containing the 3½ percent milk fat that is present when it comes from the cow. None of the milk fat is removed. "
         },
         {
-            "product": "Milk 2%",
+            "product": "Milk 2 Percent",
             "price": "$5.49",
             "image": "/static/assets/images/recommender/milk_2.jpg",
             "description": "Two percent milk contains 140 calories per one cup serving, 5 g of fat, 14 g of carbohydrates" +
@@ -24,7 +24,7 @@ app.controller("searchCtrl", function ($scope, $http,$location)
             "carbohydrate content. On the other hand, saturated fat makes up only 3 g of the total fat content. "
         },
         {
-            "product": "Milk 1%",
+            "product": "Milk 1 Percent",
             "price": "$6.49",
             "image": "/static/assets/images/recommender/milk_2.jpg",
             "description": "Ingredients: all natural Grade A lowfat milk, all natural nonfat milk, vitamin A palmitate, vitamin D3. "

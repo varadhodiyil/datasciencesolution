@@ -83,10 +83,10 @@ app.controller("postCtrl", function ($scope, $http, fileUpload) {
             $(document).ready(function () {
                 divolte.signal("Retention_submit", { "queryString": this.Retention });
             });
+            google.charts.load("current", { packages: ['corechart'] });
             $http.post(apiURL + "service/churn", this.Retention).then(function (result) {
                 $scope.summary = result.data;
                 chart_Data = result.data.data.graph1;
-                google.charts.load("current", { packages: ['corechart'] });
                 google.charts.setOnLoadCallback(function () { drawChart(chart_Data); });
                 function drawChart(d) {
                     // var data = google.visualization.arrayToDataTable([

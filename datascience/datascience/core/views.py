@@ -8,6 +8,8 @@ from rest_framework.decorators import parser_classes
 from rest_framework.response import Response
 from datascience.core.resources import predict_credit_risk , predict_fraud , lang_detect , summarize_text
 from rest_framework import status
+import json 
+import os
 # Create your views here.
 credit_data = [
     {
@@ -357,3 +359,11 @@ def send_email(request):
     )
     return Response(status)
 
+def click_stream(request):
+    return render(request,"click-stream.html")
+
+@api_view(["GET"])
+def click_stream_data(request):
+    path = os.path.dirname(__file__)
+    data = json.load(open(path+"/data.json","r"))
+    return Response(data)
