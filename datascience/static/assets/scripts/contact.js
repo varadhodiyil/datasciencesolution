@@ -4,7 +4,7 @@ contact_app.controller("contactCtrl", function ($scope, $http) {
     $scope.hasErrors = false;
     $scope.submit = function (isValid) {
         if (isValid) {
-            $http.post("/contact/", this.Contact).then(function (result) {
+            $http.post(base+"/contact/", this.Contact).then(function (result) {
                 // $(document).ready(function () {
                 //     divolte.signal("contact", { "queryString": $scope.contact });
                 // });
