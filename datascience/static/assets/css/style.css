@@ -931,3 +931,6 @@ color: #60ac39;
 .tab-content label{
     background: none;
 }
+.has-errors{
+    border: red thin solid;
+}

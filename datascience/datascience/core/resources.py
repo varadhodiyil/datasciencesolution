@@ -4,6 +4,8 @@ from datascience.core.classifiers.credit_fraud import RandomForest , load_credit
 creditRisk = CreditRiskAnalysis()
 from langdetect import detect_langs
 from summarize import FrequencySummarizer
+from datascience.core.serializers import ContactSerializer
+from django.core.mail import EmailMessage
 # fraud_detection  = RandomForest(classColumn="Class")
 # fraud_detection.train()
 # creditRisk.train()
@@ -36,3 +38,20 @@ def summarize_text(content):
         raise e
         data['request']="Invalid Request"
     return data
+
+def contact_form(data):
+    s = ContactSerializer(data = data)
+    resp = dict()
+    if s.is_valid():
+        title = "New Request from " + s.data['first_name']
+        body = "Name : "+ s.data['first_name'] + s.data['last_name']+ \
+                "\n\n Email : " +s.data['email']+ "\t Phone : "+s.data['phone'] + \
+                "\n\n Company : " +s.data['company'] + \
+                "\n\n\n\n\n\n Requirement :" + s.data['requirement']
+        email = EmailMessage(title, body, to=["madhan_94@live.com","varadhodiyil@gmail.com"],from_email="Madhan <varadhodiyil@gmail.com>")
+        email.send()
+        resp['status'] = True
+    else:
+        resp['status'] = False
+        resp['error'] =  s.errors
+    return resp

@@ -6,11 +6,12 @@ from rest_framework.parsers import JSONParser, FormParser
 from rest_framework.decorators import api_view
 from rest_framework.decorators import parser_classes
 from rest_framework.response import Response
-from datascience.core.resources import predict_credit_risk , predict_fraud , lang_detect , summarize_text
+from datascience.core.resources import predict_credit_risk , predict_fraud , lang_detect , summarize_text ,contact_form
 from rest_framework import status
 import json 
 import os
-# Create your views here.
+# Create 
+# your views here.
 credit_data = [
     {
         "val": 0.05, 
@@ -349,14 +350,17 @@ def fraudDetection(request):
         resp = predict_fraud(data)
         return Response(resp)
     return render(request, "fraud-detection.html",resp)
+@api_view(['post'])
+def contact(request):
+    # status = send_mail(
+    # 'Subject here',
+    # 'Here is the message.',
+    # 'varadhodiyil@gmail.com',
+    # ['madhan_94@live.com'],
+    # )
+    status = contact_form(request.data)
+    
 
-def send_email(request):
-    status = send_mail(
-    'Subject here',
-    'Here is the message.',
-    'varadhodiyil@gmail.com',
-    ['madhan_94@live.com'],
-    )
     return Response(status)
 
 def click_stream(request):

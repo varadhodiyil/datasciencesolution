@@ -1,5 +1,6 @@
-<div id="demorequest" class="modal fade" role="dialog">
-        <div class="modal-dialog">
+
+<div id="demorequest" class="modal fade" role="dialog" ng-app="contactApp">
+    <div class="modal-dialog">
         <!-- Modal content-->
         <div class="modal-content fp-header">
             <div class="modal-header">
@@ -8,102 +9,108 @@
             </div>
             <div class="modal-body">
                 <div class="row">
-                    <div class="col-md-12">
-                    <div class="form-group clearfix">
-                        <div class="col-md-12">
-                            <label class="clearfix">First Name</label>
-                            <input type="text" class="form-control">
-                        </div>
-                    </div>
-                    <div class="form-group clearfix">
-                        <div class="col-md-12">
-                            <label class="clearfix">Last Name</label>
-                            <input type="text" class="form-control">
-                        </div>
-                    </div>
-                    <div class="form-group clearfix">
-                        <div class="col-md-12">
-                            <label class="clearfix">Email</label>
-                            <input type="text" class="form-control">
-                        </div>
-                    </div>
-                    <div class="form-group clearfix">
-                        <div class="col-md-12">
-                            <label class="clearfix">Company</label>
-                            <input type="text" class="form-control">
-                        </div>
-                    </div>
-                    <div class="form-group clearfix">
-                        <div class="col-md-12">
-                            <label class="clearfix">Phone</label>
-                            <input type="text" class="form-control">
-                        </div>
-                    </div>
-                    <div class="form-group clearfix">
-                        <div class="col-md-12">
-                            <label class="clearfix">Your Requirement</label>
-                            <div class="srch-rev-box">
-                                <textarea rows="4" placeholder="" style="width:100%"></textarea>
-                                &nbsp;&nbsp;
+                    <form method="post" name="contactForm">
+                        <div class="col-md-12" ng-controller="contactCtrl">
+                            <div class="form-group clearfix">
+                                <div class="col-md-12">
+                                    <label class="clearfix">First Name</label>
+                                    <input type="text"  required ng-model="Contact.first_name" class="form-control">
+                                </div>
+                            </div>
+                            <div class="form-group clearfix">
+                                <div class="col-md-12">
+                                    <label class="clearfix">Last Name</label>
+                                    <input type="text" required ng-model="Contact.last_name" class="form-control">
+                                </div>
+                            </div>
+                            <div class="form-group clearfix">
+                                <div class="col-md-12">
+                                    <label class="clearfix">Email</label>
+                                    <input type="text" required ng-model="Contact.email" class="form-control">
+                                </div>
+                            </div>
+                            <div class="form-group clearfix">
+                                <div class="col-md-12">
+                                    <label class="clearfix">Company</label>
+                                    <input type="text" required ng-model="Contact.company" class="form-control">
+                                </div>
+                            </div>
+                            <div class="form-group clearfix">
+                                <div class="col-md-12">
+                                    <label class="clearfix">Phone</label>
+                                    <input type="text" required ng-model="Contact.phone" class="form-control">
+                                </div>
+                            </div>
+                            <div class="form-group clearfix">
+                                <div class="col-md-12">
+                                    <label class="clearfix">Your Requirement</label>
+                                    <div class="srch-rev-box">
+                                        <textarea rows="4" required ng-model="Contact.requirement" placeholder="" style="width:100%"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row m-t-20 form-group clearfix" ng-show="hasErrors">
+                                {% verbatim %}
+                                <p class="has-errors" ng-repeat="(key,val) in errors">{{key}} : {{val[0]}}</p>
+                                {% endverbatim %}
+                            </div>
+                            <div class="row m-t-20">
+                                <div class="col-md-12 text-center">
+                                    <button ng-click="submit(contactForm.$valid)" class="btn btn-lg btn-circle skl-btn2 txt-upper col-sm-6 center-align-div">Submit</button>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="row m-t-20">
-                        <div class="col-md-12 text-center">
-                            <a data-toggle="modal" data-target="#demorequest" class="btn btn-lg btn-circle skl-btn2 txt-upper col-sm-6 center-align-div">Submit</a>
-                        </div>
-                    </div>
-                    </div>
+                    </form>
                 </div>
             </div>
         </div>
-        </div>
+    </div>
 </div>
 
 <footer>
     <div class="footer" id="footer">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-4 col-sm-4 col-xs-12">
-                <h3>Contact</h3>
-                <ul>
-                <span>2140 Peralta Blvd,</span><br>
-                <span>#212A Fremont CA 94536 USA</span><br>
-                <span class="fa fa-envelope-o"></span> info@skalenow.com <br>
-                <span class="fa fa-phone"></span> +1 565 565 969 <br>
-                </ul>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 col-sm-4 col-xs-12">
+                    <h3>Contact</h3>
+                    <ul>
+                        <span>2140 Peralta Blvd,</span><br>
+                        <span>#212A Fremont CA 94536 USA</span><br>
+                        <span class="fa fa-envelope-o"></span> info@skalenow.com <br>
+                        <span class="fa fa-phone"></span> +1 565 565 969 <br>
+                    </ul>
+                </div>
+                <div class="col-md-4 col-sm-5 col-xs-12">
+                    <h3 class="skl-let-spac1"> Connect with us </h3>
+                    <ul class="social">
+                        <li> <a href="#"> <i class=" fa fa-facebook">   </i> </a> </li>
+                        <li> <a href="#"> <i class="fa fa-twitter">   </i> </a> </li>
+                        <li> <a href="#"> <i class="fa fa-google-plus">   </i> </a> </li>
+                        <li> <a href="#"> <i class="fa fa-pinterest">   </i> </a> </li>
+                        <li> <a href="#"> <i class="fa fa-youtube">   </i> </a> </li>
+                    </ul>
+                </div>
+                <div class="col-md-4 col-sm-3 col-xs-12 ">
+                    <h3>Newsletter</h3>
+                    <ul>
+                        <li>
+                            <div class="input-append newsletter-box text-center">
+                                <input type="text" class="form-control m-b-10" placeholder="Email">
+                                <button class="btn btn-primary btn-circle" type="button">Get updates <i class="fa fa-long-arrow-right"> </i> </button>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
             </div>
-            <div class="col-md-4 col-sm-5 col-xs-12">
-                <h3 class="skl-let-spac1"> Connect with us </h3>
-                <ul class="social">
-                <li> <a href="#"> <i class=" fa fa-facebook">   </i> </a> </li>
-                <li> <a href="#"> <i class="fa fa-twitter">   </i> </a> </li>
-                <li> <a href="#"> <i class="fa fa-google-plus">   </i> </a> </li>
-                <li> <a href="#"> <i class="fa fa-pinterest">   </i> </a> </li>
-                <li> <a href="#"> <i class="fa fa-youtube">   </i> </a> </li>
-                </ul>
-            </div>
-            <div class="col-md-4 col-sm-3 col-xs-12 ">
-                <h3>Newsletter</h3>
-                <ul>
-                <li>
-                    <div class="input-append newsletter-box text-center">
-                        <input type="text" class="form-control m-b-10" placeholder="Email">
-                        <button class="btn btn-primary btn-circle" type="button">Get updates <i class="fa fa-long-arrow-right"> </i> </button>
-                    </div>
-                </li>
-                </ul>
-            </div>
+            <!--/.row-->
         </div>
-        <!--/.row--> 
-    </div>
-    <!--/.container--> 
+        <!--/.container-->
     </div>
     <!--/.footer-->
     <div class="footer-bottom">
-    <div class="container">
-        <p class="pull-left"> Copyright © Skalenow Inc. All right reserved. </p>
+        <div class="container">
+            <p class="pull-left"> Copyright © Skalenow Inc. All right reserved. </p>
+        </div>
     </div>
-    </div>
-    <!--/.footer-bottom--> 
+    <!--/.footer-bottom-->
 </footer>
