@@ -50,7 +50,7 @@ def contact_form(data):
                 "\n\n\n\n\n\n Requirement :" + s.data['requirement']
         # to_email = ["ram@skalenow.com","sales@skalenow.com"]
         to_email = ['madhan_94@live.com']
-        email = EmailMessage(title, body, to= to_email,from_email="Madhan <varadhodiyil@gmail.com>")
+        email = EmailMessage(title, body, to= to_email,from_email="Madhan <madhan@sigmaways.com>")
         email.send()
         resp['status'] = True
     else:
