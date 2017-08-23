@@ -1,7 +1,7 @@
 var app = angular.module("clickStreamApp", []);
 app.controller("postCtrl", function ($scope, $http) {
     google.charts.load('current', { packages: ['corechart'] });
-    $http.get("/clickstream").then(function (response) {
+    $http.get(base+"/clickstream").then(function (response) {
         google.charts.setOnLoadCallback(drawChart_1);
         response = response.data;
         function drawChart_1() {
