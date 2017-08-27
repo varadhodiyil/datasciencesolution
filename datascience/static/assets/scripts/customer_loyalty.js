@@ -40,16 +40,12 @@ app.controller("postCtrl", function ($scope, $http, fileUpload) {
     $scope.Loyalty = {};
     $scope.submit = function (isValid) {
         if (isValid) {
-             $scope.isLoaded = true;
-             $(document).ready(function () 
-            {
-                    divolte.signal("Customer_loyalty_Submit",{"queryString":this.Loyalty});
-            });
+            $scope.isLoaded = true;
             $http.post(apiURL + "service/loyalty", this.Loyalty).then(function (result) {
                 $scope.summary = result.data;
                 chart_Data = result.data.data;
                 google.charts.load("current", { packages: ['corechart'] });
-                  google.charts.setOnLoadCallback(function() { drawChart(chart_Data); });
+                google.charts.setOnLoadCallback(function () { drawChart(chart_Data); });
                 function drawChart(d) {
                     // var data = google.visualization.arrayToDataTable([
                     //     ["Element", "Density", { role: "style" }],
@@ -57,19 +53,16 @@ app.controller("postCtrl", function ($scope, $http, fileUpload) {
                     dataTable_A = new google.visualization.DataTable();
                     dataTable_Q = new google.visualization.DataTable();
                     // dataTable.addRow(["Copper", 8.94, "#b87333"]); 
-                    dataTable_A.addColumn('string', 'Month');  
+                    dataTable_A.addColumn('string', 'Month');
                     dataTable_A.addColumn('number', 'Amount');
-                    dataTable_Q.addColumn('string', 'Month');  
+                    dataTable_Q.addColumn('string', 'Month');
                     dataTable_Q.addColumn('number', 'Quantity');
-                    d[0].forEach(function(element) 
-                    {
-                        if(element.Purchase == "Amount")
-                        {
-                            dataTable_A.addRow([element.Month, Number(parseFloat(element.Value).toFixed(2)  )]);    
+                    d[0].forEach(function (element) {
+                        if (element.Purchase == "Amount") {
+                            dataTable_A.addRow([element.Month, Number(parseFloat(element.Value).toFixed(2))]);
                         }
-                        if(element.Purchase == "Quantity")
-                        {
-                            dataTable_Q.addRow([element.Month, Number(parseFloat(element.Value).toFixed(2)  )]);    
+                        if (element.Purchase == "Quantity") {
+                            dataTable_Q.addRow([element.Month, Number(parseFloat(element.Value).toFixed(2))]);
                         }
                     }, this);
 
@@ -91,17 +84,19 @@ app.controller("postCtrl", function ($scope, $http, fileUpload) {
                     chart_1.draw(dataTable_A, options_1);
                     var chart_2 = new google.visualization.ColumnChart(document.getElementById("probdist_2"));
                     chart_2.draw(dataTable_Q, options_2);
-                    
+
                 }
+                $(document).ready(function () {
+                    divolte.signal("Customer_loyalty_Submit", { "queryString": $scope.Loyalty });
+                });
             });
         }
     }
 });
 
 
-$(document).ready(function () 
-{
-    divolte.signal("customerLoyalty",{});
+$(document).ready(function () {
+    divolte.signal("customerLoyalty", {});
     $('#clv').DataTable(
         {
             // scrollX : true,

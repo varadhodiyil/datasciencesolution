@@ -81,7 +81,7 @@ app.controller("postCtrl", function ($scope, $http, fileUpload) {
     $scope.submit = function (isValid) {
         if (isValid) {
             $(document).ready(function () {
-                divolte.signal("Retention_submit", { "queryString": this.Retention });
+                divolte.signal("Retention_submit", { "queryString": $scope.Retention });
             });
             google.charts.load("current", { packages: ['corechart'] });
             $http.post(apiURL + "service/churn", this.Retention).then(function (result) {
