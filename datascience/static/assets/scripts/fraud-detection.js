@@ -4,10 +4,6 @@ app.controller("postCtrl", function ($scope, $http) {
     $scope.Fraud = {};
     $scope.submit = function (isValid) {
         if (isValid) {
-            $(document).ready(function () 
-            {
-                    divolte.signal("FraudDetection_Submit",{"queryString":$scope.Credit});
-            });
             $http.post("#", this.Fraud).then(function (result) {
                 google.charts.load("current", { packages: ['corechart'] });
                 google.charts.setOnLoadCallback(drawChart);
@@ -47,7 +43,12 @@ app.controller("postCtrl", function ($scope, $http) {
                     };
                     var chart = new google.visualization.ColumnChart(document.getElementById("probdist"));
                     chart.draw(view, options);
+                    $(document).ready(function () 
+                    {
+                            divolte.signal("FraudDetection_Submit",{"queryString":$scope.Credit});
+                    });
                 }
+
 
             });
         }
@@ -55,6 +56,7 @@ app.controller("postCtrl", function ($scope, $http) {
             console.log("not valid");
         }
     };
+    $scope.submit(true);
 });
     $(document).ready(function () {
         divolte.signal("FraudDetection",{});

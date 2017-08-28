@@ -80,9 +80,7 @@ app.controller("postCtrl", function ($scope, $http, fileUpload) {
     $scope.Retention = {};
     $scope.submit = function (isValid) {
         if (isValid) {
-            $(document).ready(function () {
-                divolte.signal("Retention_submit", { "queryString": $scope.Retention });
-            });
+            
             google.charts.load("current", { packages: ['corechart'] });
             $http.post(apiURL + "service/churn", this.Retention).then(function (result) {
                 $scope.summary = result.data;
@@ -111,9 +109,13 @@ app.controller("postCtrl", function ($scope, $http, fileUpload) {
                     var chart = new google.visualization.ColumnChart(document.getElementById("probdist"));
                     chart.draw(dataTable, options);
                 }
+                $(document).ready(function () {
+                    divolte.signal("Retention_submit", { "queryString": $scope.Retention });
+                });
             });
         }
     }
+    //$scope.submit(true);
 });
 
 $(document).ready(function () {
