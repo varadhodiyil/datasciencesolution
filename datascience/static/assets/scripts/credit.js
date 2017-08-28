@@ -8,7 +8,7 @@ app.controller("postCtrl", function ($scope, $http) {
             {
                     divolte.signal("CreditAnalysis_Submit",{"query":$scope.Credit});
             });
-            $http.post(base+"/predit/", this.Credit).then(function (result) {
+            $http.post("predit/", this.Credit).then(function (result) {
                 google.charts.load("current", { packages: ['corechart'] });
                 google.charts.setOnLoadCallback(drawChart);
                 function drawChart() 
