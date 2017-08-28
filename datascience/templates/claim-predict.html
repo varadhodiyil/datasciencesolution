@@ -25,8 +25,7 @@
                   <input type="text" ng-model="Claim.{{x.model}}" ng-init="Claim.{{x.model}}='{{x.value}}'" required="true" class="form-control">
                 </div>
               </div>
-              {% endfor %}
-              <div class="col-md-12 m-t-20">
+              {% endfor %}              <div class="col-md-12 m-t-20">
                 <button type="submit" ng-click="submit(creditForm.$valid)" class="btn skl-btn1 nav-justified txt-upper">Predict Credit Risk</button>
               </div>
             </form>
@@ -66,8 +65,8 @@ Bodily Injury Liability Insurance covers other people’s bodily injury or death
                <p class="skl-txt-big1">
                               <pre>
                  <code>
-curl '<script>document.write(apiURL )</script>/service/claim/' -X POST -H 'Content-Type: application/json'\
--data {"veh_value":"6.43","exposure":"0.241897754","veh_body":"STNWG","veh_age":"M","gender":"0","area":"A","dr_age":"3","claim_ind":"0","claim_count":"0"}
+curl '<script>document.write(apiURL )</script>service/claim/' -X POST -H 'Content-Type: application/json'\
+-d {"veh_value":"6.43","exposure":"0.241897754","veh_body":"STNWG","veh_age":"M","gender":"0","area":"A","dr_age":"3","claim_ind":"0","claim_count":"0"}
 </code>
 </pre>
                </p>
