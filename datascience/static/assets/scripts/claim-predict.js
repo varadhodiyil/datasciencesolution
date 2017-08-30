@@ -5,7 +5,7 @@ app.controller("claimCtrl", function ($scope, $http) {
     $scope.submit = function (isValid) {
         if (isValid) {
                 divolte.signal("Claim_Predict_Submit", { "queryString": this.Claim });
-            $http.post(apiURL + "service/claim", this.Claim).then(function (response) {
+            $http.get(apiURL + "service/claim").then(function (response) {
                 google.charts.load('current', { packages: ['corechart', 'line'] });
                 google.charts.setOnLoadCallback(drawBasic);
                 function drawBasic() {
@@ -37,6 +37,7 @@ app.controller("claimCtrl", function ($scope, $http) {
 
         }
     };
+$scope.submit(true);
 
 
 
@@ -44,4 +45,10 @@ app.controller("claimCtrl", function ($scope, $http) {
 
 $(document).ready(function () {
     divolte.signal("Claim_Predict", {});
+    $('#claim').DataTable(
+        {
+            scrollX : true,
+            searching: false
+        }
+    );
 });
