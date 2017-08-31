@@ -1,18 +1,14 @@
-
-
-{% extends 'base.html' %}
-{% load static %}
-{% block content %}
+ {% extends 'base.html' %} {% load static %} {% block content %}
 <div class="container m-t-inner" ng-app="claimPredictApp">
-   <div class="row">
-      <div class="col-sm-12 text-center">
-         <h1 class="head-txt-1 txt-upper m-t-120 skl-clr1">Insurance </h1>
-         <h4 class="skl-lett-spac">Claim Prediction</h4>
-      </div>
-   </div>
-   <hr>
-   <div class="row" ng-controller="claimCtrl">
-<div class="col-md-12 skl-box-outer">
+  <div class="row">
+    <div class="col-sm-12 text-center">
+      <h1 class="head-txt-1 txt-upper m-t-120 skl-clr1">Insurance </h1>
+      <h4 class="skl-lett-spac">Claim Prediction</h4>
+    </div>
+  </div>
+  <hr>
+  <div class="row" ng-controller="claimCtrl">
+    <div class="col-md-12 skl-box-outer">
       <!-- <div class="col-md-6">
         <div class="panel panel-default skl-panel1">
           <div class="panel-heading"><span class="skl-txt-big1">Credit Applicant Profile</span></div>
@@ -32,65 +28,86 @@
           </div>
         </div>
       </div> -->
-      <div class="col-md-12">
+      <div class="col-md-6">
+        <div class="panel panel-default skl-panel1">
+          <div class="panel-heading"><span class="skl-txt-big1">Credit Applicant Profile</span></div>
+          <div class="panel-body">
+            <form class="form-horizontal" name="creditForm">
+
+              <div class="form-group">
+                <div class="radio input-group">
+                  <label><input type="radio" ng-model="Claim.type" required="true" value="Telecom">Kangroo</label>
+                </div>
+              </div>
+              <div class="col-md-12 m-t-20">
+                <button type="submit" ng-click="submit(creditForm.$valid)" class="btn skl-btn1 nav-justified txt-upper">Predict Credit Risk</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
         <div class="panel panel-default skl-panel2">
           <div class="panel-heading"><span class="skl-txt-big1">Claim Prediction</span></div>
           <div class="panel-body">
-            <div id="probdist" style="width:auto;height:636px;"></div>
+            <div id="probdist" style="width:auto;height:450px;"></div>
           </div>
         </div>
       </div>
     </div>
-   </div>
-   <div class="row">
-      <div class="col-md-12">
-         <h2 class="text-center m-t-40 txt-upper">How it Works</h2>
-      </div>
-   </div>
-   <div class="row m-t-40">
-      <div class="col-md-12">
-         <div class="tab_container">
-            <input id="tab1" type="radio" name="tabs" checked>
-            <label for="tab1"><i class="fa fa-pencil-square-o"></i><span>NON-TECHNICAL</span></label>
-            <input id="tab2" type="radio" name="tabs">
-            <label for="tab2"><i class="fa fa-code"></i><span>TECHNICAL</span></label>
-            <input id="tab3" type="radio" name="tabs">
-            <label for="tab3"><i class="fa fa-table"></i><span>Sample Data</span></label>
-            <section id="content1" class="tab-content">
-               <p class="skl-txt-big1">
-                  Risk varies widely from customer to customer, and a deep understanding of different risk factors helps predict the likelihood and cost of insurance claims. The goal of this competition is to better predict Bodily Injury Liability Insurance claim payments based on the characteristics of the insured customer’s vehicle.
-Many factors contribute to the frequency and severity of car accidents including how, where and under what conditions people drive, as well as what they are driving. 
-Bodily Injury Liability Insurance covers other people’s bodily injury or death for which the insured is responsible. .
-               </p>
-            </section>
-            <section id="content2" class="tab-content">
-               <p class="skl-txt-big1">
-                              <pre>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <h2 class="text-center m-t-40 txt-upper">How it Works</h2>
+    </div>
+  </div>
+  <div class="row m-t-40">
+    <div class="col-md-12">
+      <div class="tab_container">
+        <input id="tab1" type="radio" name="tabs" checked>
+        <label for="tab1"><i class="fa fa-pencil-square-o"></i><span>NON-TECHNICAL</span></label>
+        <input id="tab2" type="radio" name="tabs">
+        <label for="tab2"><i class="fa fa-code"></i><span>TECHNICAL</span></label>
+        <input id="tab3" type="radio" name="tabs">
+        <label for="tab3"><i class="fa fa-table"></i><span>Sample Data</span></label>
+        <section id="content1" class="tab-content">
+          <p class="skl-txt-big1">
+            Risk varies widely from customer to customer, and a deep understanding of different risk factors helps predict the likelihood
+            and cost of insurance claims. The goal is to better predict Bodily Injury Liability Insurance claim payments
+            based on the characteristics of the insured customer’s vehicle. Many factors contribute to the frequency and
+            severity of car accidents including how, where and under what conditions people drive, as well as what they are
+            driving.  Bodily Injury Liability Insurance covers other people’s bodily injury or death for which the insured
+            is responsible. .
+          </p>
+        </section>
+        <section id="content2" class="tab-content">
+          <p class="skl-txt-big1">
+            <pre>
                  <code>
-curl '<script>document.write(apiURL )</script>service/claim/' -X GET -H 'Content-Type: application/json'
+curl '<script>document.write(apiURL)</script>service/claim/' -X GET -H 'Content-Type: application/json'
 </code>
 </pre>
-               </p>
-            </section>
-            <section id="content3" class="tab-content">
-              <table id="claim" class="table table-bordered table-hover table-condensed">
-                <thead>
-                <tr>
+          </p>
+        </section>
+        <section id="content3" class="tab-content">
+          <table id="claim" class="table table-bordered table-hover table-condensed">
+            <thead>
+              <tr>
                 <th>id</td>
-                <th>veh_value</th>
+                  <th>veh_value</th>
                   <th>exposure</th>
-                    <th>veh_body</th>
-                <th>veh_age</th>
-                <th>gender</th>
-                <th>area</th>
-                <th>dr_age</th>
-                <th>claim_ind</th>
-                <th>claim_count</th>
-                <th>claim_cost</h>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
+                  <th>veh_body</th>
+                  <th>veh_age</th>
+                  <th>gender</th>
+                  <th>area</th>
+                  <th>dr_age</th>
+                  <th>claim_ind</th>
+                  <th>claim_count</th>
+                  <th>claim_cost</h>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
                 <td>3</td>
                 <td>6.43</td>
                 <td>0.241897754</td>
@@ -102,8 +119,8 @@ curl '<script>document.write(apiURL )</script>service/claim/' -X GET -H 'Content
                 <td>0</td>
                 <td>0</td>
                 <td>0</td>
-                </tr>
-                <tr>
+              </tr>
+              <tr>
                 <td>6</td>
                 <td>4.46</td>
                 <td>0.856522757</td>
@@ -115,8 +132,8 @@ curl '<script>document.write(apiURL )</script>service/claim/' -X GET -H 'Content
                 <td>0</td>
                 <td>0</td>
                 <td>0</td>
-                </tr>
-                <tr>
+              </tr>
+              <tr>
                 <td>20</td>
                 <td>1.7</td>
                 <td>0.417516596</td>
@@ -128,8 +145,8 @@ curl '<script>document.write(apiURL )</script>service/claim/' -X GET -H 'Content
                 <td>0</td>
                 <td>0</td>
                 <td>0</td>
-                </tr>
-                <tr>
+              </tr>
+              <tr>
                 <td>21</td>
                 <td>0.48</td>
                 <td>0.626974524</td>
@@ -141,8 +158,8 @@ curl '<script>document.write(apiURL )</script>service/claim/' -X GET -H 'Content
                 <td>0</td>
                 <td>0</td>
                 <td>0</td>
-                </tr>
-                <tr>
+              </tr>
+              <tr>
                 <td>28</td>
                 <td>1.96</td>
                 <td>0.089770031</td>
@@ -154,8 +171,8 @@ curl '<script>document.write(apiURL )</script>service/claim/' -X GET -H 'Content
                 <td>0</td>
                 <td>0</td>
                 <td>0</td>
-                </tr>
-                <tr>
+              </tr>
+              <tr>
                 <td>29</td>
                 <td>1.78</td>
                 <td>0.25654335</td>
@@ -167,8 +184,8 @@ curl '<script>document.write(apiURL )</script>service/claim/' -X GET -H 'Content
                 <td>0</td>
                 <td>0</td>
                 <td>0</td>
-                </tr>
-                <tr>
+              </tr>
+              <tr>
                 <td>31</td>
                 <td>2.7</td>
                 <td>0.688128611</td>
@@ -180,8 +197,8 @@ curl '<script>document.write(apiURL )</script>service/claim/' -X GET -H 'Content
                 <td>0</td>
                 <td>0</td>
                 <td>0</td>
-                </tr>
-                <tr>
+              </tr>
+              <tr>
                 <td>34</td>
                 <td>0.94</td>
                 <td>0.912765859</td>
@@ -193,8 +210,8 @@ curl '<script>document.write(apiURL )</script>service/claim/' -X GET -H 'Content
                 <td>0</td>
                 <td>0</td>
                 <td>0</td>
-                </tr>
-                <tr>
+              </tr>
+              <tr>
                 <td>36</td>
                 <td>1.98</td>
                 <td>0.157753423</td>
@@ -206,8 +223,8 @@ curl '<script>document.write(apiURL )</script>service/claim/' -X GET -H 'Content
                 <td>0</td>
                 <td>0</td>
                 <td>0</td>
-                </tr>
-                <tr>
+              </tr>
+              <tr>
                 <td>40</td>
                 <td>1.04</td>
                 <td>0.044920865</td>
@@ -219,8 +236,8 @@ curl '<script>document.write(apiURL )</script>service/claim/' -X GET -H 'Content
                 <td>0</td>
                 <td>0</td>
                 <td>0</td>
-                </tr>
-                <tr>
+              </tr>
+              <tr>
                 <td>45</td>
                 <td>1.1</td>
                 <td>0.351634665</td>
@@ -232,8 +249,8 @@ curl '<script>document.write(apiURL )</script>service/claim/' -X GET -H 'Content
                 <td>0</td>
                 <td>0</td>
                 <td>0</td>
-                </tr>
-                <tr>
+              </tr>
+              <tr>
                 <td>47</td>
                 <td>4.04</td>
                 <td>0.858067296</td>
@@ -245,8 +262,8 @@ curl '<script>document.write(apiURL )</script>service/claim/' -X GET -H 'Content
                 <td>0</td>
                 <td>0</td>
                 <td>0</td>
-                </tr>
-                <tr>
+              </tr>
+              <tr>
                 <td>49</td>
                 <td>1.38</td>
                 <td>0.654490078</td>
@@ -258,8 +275,8 @@ curl '<script>document.write(apiURL )</script>service/claim/' -X GET -H 'Content
                 <td>0</td>
                 <td>0</td>
                 <td>0</td>
-                </tr>
-                <tr>
+              </tr>
+              <tr>
                 <td>53</td>
                 <td>1.24</td>
                 <td>0.731126357</td>
@@ -271,8 +288,8 @@ curl '<script>document.write(apiURL )</script>service/claim/' -X GET -H 'Content
                 <td>0</td>
                 <td>0</td>
                 <td>0</td>
-                </tr>
-                <tr>
+              </tr>
+              <tr>
                 <td>56</td>
                 <td>1.47</td>
                 <td>0.472666497</td>
@@ -284,8 +301,8 @@ curl '<script>document.write(apiURL )</script>service/claim/' -X GET -H 'Content
                 <td>0</td>
                 <td>0</td>
                 <td>0</td>
-                </tr>
-                <tr>
+              </tr>
+              <tr>
                 <td>57</td>
                 <td>1.35</td>
                 <td>0.630303137</td>
@@ -297,8 +314,8 @@ curl '<script>document.write(apiURL )</script>service/claim/' -X GET -H 'Content
                 <td>0</td>
                 <td>0</td>
                 <td>0</td>
-                </tr>
-                <tr>
+              </tr>
+              <tr>
                 <td>61</td>
                 <td>1.59</td>
                 <td>0.686495538</td>
@@ -310,8 +327,8 @@ curl '<script>document.write(apiURL )</script>service/claim/' -X GET -H 'Content
                 <td>0</td>
                 <td>0</td>
                 <td>0</td>
-                </tr>
-                <tr>
+              </tr>
+              <tr>
                 <td>63</td>
                 <td>1.92</td>
                 <td>0.916322649</td>
@@ -323,8 +340,8 @@ curl '<script>document.write(apiURL )</script>service/claim/' -X GET -H 'Content
                 <td>0</td>
                 <td>0</td>
                 <td>0</td>
-                </tr>
-                <tr>
+              </tr>
+              <tr>
                 <td>64</td>
                 <td>3.63</td>
                 <td>0.635119178</td>
@@ -336,8 +353,8 @@ curl '<script>document.write(apiURL )</script>service/claim/' -X GET -H 'Content
                 <td>0</td>
                 <td>0</td>
                 <td>0</td>
-                </tr>
-                <tr>
+              </tr>
+              <tr>
                 <td>69</td>
                 <td>1.84</td>
                 <td>0.532929586</td>
@@ -349,8 +366,8 @@ curl '<script>document.write(apiURL )</script>service/claim/' -X GET -H 'Content
                 <td>0</td>
                 <td>0</td>
                 <td>0</td>
-                </tr>
-                <tr>
+              </tr>
+              <tr>
                 <td>73</td>
                 <td>3.77</td>
                 <td>0.202138282</td>
@@ -362,8 +379,8 @@ curl '<script>document.write(apiURL )</script>service/claim/' -X GET -H 'Content
                 <td>0</td>
                 <td>0</td>
                 <td>0</td>
-                </tr>
-                <tr>
+              </tr>
+              <tr>
                 <td>77</td>
                 <td>0.44</td>
                 <td>0.610263216</td>
@@ -375,8 +392,8 @@ curl '<script>document.write(apiURL )</script>service/claim/' -X GET -H 'Content
                 <td>0</td>
                 <td>0</td>
                 <td>0</td>
-                </tr>
-                <tr>
+              </tr>
+              <tr>
                 <td>78</td>
                 <td>0.44</td>
                 <td>0.917491085</td>
@@ -388,8 +405,8 @@ curl '<script>document.write(apiURL )</script>service/claim/' -X GET -H 'Content
                 <td>0</td>
                 <td>0</td>
                 <td>0</td>
-                </tr>
-                <tr>
+              </tr>
+              <tr>
                 <td>80</td>
                 <td>1.23</td>
                 <td>0.627490963</td>
@@ -401,8 +418,8 @@ curl '<script>document.write(apiURL )</script>service/claim/' -X GET -H 'Content
                 <td>0</td>
                 <td>0</td>
                 <td>0</td>
-                </tr>
-                <tr>
+              </tr>
+              <tr>
                 <td>81</td>
                 <td>1.89</td>
                 <td>0.608144096</td>
@@ -414,8 +431,8 @@ curl '<script>document.write(apiURL )</script>service/claim/' -X GET -H 'Content
                 <td>0</td>
                 <td>0</td>
                 <td>0</td>
-                </tr>
-                <tr>
+              </tr>
+              <tr>
                 <td>86</td>
                 <td>0.61</td>
                 <td>0.680916346</td>
@@ -427,8 +444,8 @@ curl '<script>document.write(apiURL )</script>service/claim/' -X GET -H 'Content
                 <td>0</td>
                 <td>0</td>
                 <td>0</td>
-                </tr>
-                <tr>
+              </tr>
+              <tr>
                 <td>90</td>
                 <td>1.51</td>
                 <td>0.170432893</td>
@@ -440,8 +457,8 @@ curl '<script>document.write(apiURL )</script>service/claim/' -X GET -H 'Content
                 <td>0</td>
                 <td>0</td>
                 <td>0</td>
-                </tr>
-                <tr>
+              </tr>
+              <tr>
                 <td>92</td>
                 <td>1.26</td>
                 <td>0.919359694</td>
@@ -453,8 +470,8 @@ curl '<script>document.write(apiURL )</script>service/claim/' -X GET -H 'Content
                 <td>0</td>
                 <td>0</td>
                 <td>0</td>
-                </tr>
-                <tr>
+              </tr>
+              <tr>
                 <td>97</td>
                 <td>4.91</td>
                 <td>0.659085101</td>
@@ -466,8 +483,8 @@ curl '<script>document.write(apiURL )</script>service/claim/' -X GET -H 'Content
                 <td>0</td>
                 <td>0</td>
                 <td>0</td>
-                </tr>
-                <tr>
+              </tr>
+              <tr>
                 <td>98</td>
                 <td>2.31</td>
                 <td>0.26702117</td>
@@ -479,8 +496,8 @@ curl '<script>document.write(apiURL )</script>service/claim/' -X GET -H 'Content
                 <td>0</td>
                 <td>0</td>
                 <td>0</td>
-                </tr>
-                <tr>
+              </tr>
+              <tr>
                 <td>99</td>
                 <td>1.17</td>
                 <td>0.373406076</td>
@@ -492,8 +509,8 @@ curl '<script>document.write(apiURL )</script>service/claim/' -X GET -H 'Content
                 <td>0</td>
                 <td>0</td>
                 <td>0</td>
-                </tr>
-                <tr>
+              </tr>
+              <tr>
                 <td>101</td>
                 <td>1.81</td>
                 <td>0.157805121</td>
@@ -505,8 +522,8 @@ curl '<script>document.write(apiURL )</script>service/claim/' -X GET -H 'Content
                 <td>0</td>
                 <td>0</td>
                 <td>0</td>
-                </tr>
-                <tr>
+              </tr>
+              <tr>
                 <td>102</td>
                 <td>1.25</td>
                 <td>0.917398657</td>
@@ -518,8 +535,8 @@ curl '<script>document.write(apiURL )</script>service/claim/' -X GET -H 'Content
                 <td>0</td>
                 <td>0</td>
                 <td>0</td>
-                </tr>
-                <tr>
+              </tr>
+              <tr>
                 <td>105</td>
                 <td>1</td>
                 <td>0.342001507</td>
@@ -531,8 +548,8 @@ curl '<script>document.write(apiURL )</script>service/claim/' -X GET -H 'Content
                 <td>0</td>
                 <td>0</td>
                 <td>0</td>
-                </tr>
-                <tr>
+              </tr>
+              <tr>
                 <td>107</td>
                 <td>1.46</td>
                 <td>0.908747989</td>
@@ -544,8 +561,8 @@ curl '<script>document.write(apiURL )</script>service/claim/' -X GET -H 'Content
                 <td>0</td>
                 <td>0</td>
                 <td>0</td>
-                </tr>
-                <tr>
+              </tr>
+              <tr>
                 <td>112</td>
                 <td>0.45</td>
                 <td>0.331974782</td>
@@ -557,8 +574,8 @@ curl '<script>document.write(apiURL )</script>service/claim/' -X GET -H 'Content
                 <td>0</td>
                 <td>0</td>
                 <td>0</td>
-                </tr>
-                <tr>
+              </tr>
+              <tr>
                 <td>115</td>
                 <td>0.76</td>
                 <td>0.858882411</td>
@@ -570,8 +587,8 @@ curl '<script>document.write(apiURL )</script>service/claim/' -X GET -H 'Content
                 <td>0</td>
                 <td>0</td>
                 <td>0</td>
-                </tr>
-                <tr>
+              </tr>
+              <tr>
                 <td>117</td>
                 <td>9.33</td>
                 <td>0.380635327</td>
@@ -583,8 +600,8 @@ curl '<script>document.write(apiURL )</script>service/claim/' -X GET -H 'Content
                 <td>0</td>
                 <td>0</td>
                 <td>0</td>
-                </tr>
-                <tr>
+              </tr>
+              <tr>
                 <td>119</td>
                 <td>1.76</td>
                 <td>0.770876684</td>
@@ -596,8 +613,8 @@ curl '<script>document.write(apiURL )</script>service/claim/' -X GET -H 'Content
                 <td>0</td>
                 <td>0</td>
                 <td>0</td>
-                </tr>
-                <tr>
+              </tr>
+              <tr>
                 <td>122</td>
                 <td>3.32</td>
                 <td>0.034059806</td>
@@ -609,8 +626,8 @@ curl '<script>document.write(apiURL )</script>service/claim/' -X GET -H 'Content
                 <td>0</td>
                 <td>0</td>
                 <td>0</td>
-                </tr>
-                <tr>
+              </tr>
+              <tr>
                 <td>126</td>
                 <td>2.11</td>
                 <td>0.597717724</td>
@@ -622,8 +639,8 @@ curl '<script>document.write(apiURL )</script>service/claim/' -X GET -H 'Content
                 <td>0</td>
                 <td>0</td>
                 <td>0</td>
-                </tr>
-                <tr>
+              </tr>
+              <tr>
                 <td>127</td>
                 <td>1.47</td>
                 <td>0.53188025</td>
@@ -635,8 +652,8 @@ curl '<script>document.write(apiURL )</script>service/claim/' -X GET -H 'Content
                 <td>0</td>
                 <td>0</td>
                 <td>0</td>
-                </tr>
-                <tr>
+              </tr>
+              <tr>
                 <td>131</td>
                 <td>0.9</td>
                 <td>0.991369421</td>
@@ -648,8 +665,8 @@ curl '<script>document.write(apiURL )</script>service/claim/' -X GET -H 'Content
                 <td>0</td>
                 <td>0</td>
                 <td>0</td>
-                </tr>
-                <tr>
+              </tr>
+              <tr>
                 <td>139</td>
                 <td>1.77</td>
                 <td>0.904718424</td>
@@ -661,20 +678,409 @@ curl '<script>document.write(apiURL )</script>service/claim/' -X GET -H 'Content
                 <td>0</td>
                 <td>0</td>
                 <td>0</td>
-                </tr>
-                </tbody></table>
-            </section>
-         </div>
+              </tr>
+              <tr>
+                <td>15231</td>
+                <td>1.3</td>
+                <td>0.895292157</td>
+                <td>HBACK</td>
+                <td>2</td>
+                <td>F</td>
+                <td>A</td>
+                <td>5</td>
+                <td>1</td>
+                <td>1</td>
+                <td>1140.51562</td>
+              </tr>
+              <tr>
+                <td>15232</td>
+                <td>1.19</td>
+                <td>0.30726697</td>
+                <td>HBACK</td>
+                <td>3</td>
+                <td>F</td>
+                <td>A</td>
+                <td>6</td>
+                <td>1</td>
+                <td>1</td>
+                <td>3436.550152</td>
+              </tr>
+              <tr>
+                <td>15237</td>
+                <td>1.07</td>
+                <td>0.501639498</td>
+                <td>HBACK</td>
+                <td>3</td>
+                <td>M</td>
+                <td>A</td>
+                <td>3</td>
+                <td>1</td>
+                <td>1</td>
+                <td>366.5256692</td>
+              </tr>
+              <tr>
+                <td>15238</td>
+                <td>2.49</td>
+                <td>0.740907968</td>
+                <td>STNWG</td>
+                <td>3</td>
+                <td>F</td>
+                <td>A</td>
+                <td>3</td>
+                <td>1</td>
+                <td>1</td>
+                <td>1724.475407</td>
+              </tr>
+              <tr>
+                <td>15242</td>
+                <td>2.08</td>
+                <td>0.781441393</td>
+                <td>HBACK</td>
+                <td>2</td>
+                <td>M</td>
+                <td>A</td>
+                <td>4</td>
+                <td>1</td>
+                <td>1</td>
+                <td>1399.084569</td>
+              </tr>
+              <tr>
+                <td>15243</td>
+                <td>3.15</td>
+                <td>0.596309939</td>
+                <td>HDTOP</td>
+                <td>1</td>
+                <td>F</td>
+                <td>A</td>
+                <td>3</td>
+                <td>1</td>
+                <td>1</td>
+                <td>207.7482112</td>
+              </tr>
+              <tr>
+                <td>15248</td>
+                <td>0.5</td>
+                <td>0.46052554</td>
+                <td>SEDAN</td>
+                <td>4</td>
+                <td>F</td>
+                <td>A</td>
+                <td>6</td>
+                <td>1</td>
+                <td>1</td>
+                <td>491.1749976</td>
+              </tr>
+              <tr>
+                <td>15249</td>
+                <td>1.04</td>
+                <td>0.64696963</td>
+                <td>SEDAN</td>
+                <td>4</td>
+                <td>F</td>
+                <td>A</td>
+                <td>3</td>
+                <td>1</td>
+                <td>1</td>
+                <td>562.2090773</td>
+              </tr>
+              <tr>
+                <td>15253</td>
+                <td>2.47</td>
+                <td>0.579244378</td>
+                <td>SEDAN</td>
+                <td>2</td>
+                <td>F</td>
+                <td>A</td>
+                <td>4</td>
+                <td>1</td>
+                <td>1</td>
+                <td>381.2379821</td>
+              </tr>
+              <tr>
+                <td>15255</td>
+                <td>4.1</td>
+                <td>0.999325121</td>
+                <td>STNWG</td>
+                <td>2</td>
+                <td>M</td>
+                <td>A</td>
+                <td>6</td>
+                <td>1</td>
+                <td>1</td>
+                <td>363.9610356</td>
+              </tr>
+              <tr>
+                <td>15257</td>
+                <td>0.58</td>
+                <td>0.256886904</td>
+                <td>HBACK</td>
+                <td>4</td>
+                <td>F</td>
+                <td>A</td>
+                <td>4</td>
+                <td>1</td>
+                <td>1</td>
+                <td>1050.401757</td>
+              </tr>
+              <tr>
+                <td>15258</td>
+                <td>2.01</td>
+                <td>0.183061448</td>
+                <td>SEDAN</td>
+                <td>2</td>
+                <td>M</td>
+                <td>A</td>
+                <td>3</td>
+                <td>1</td>
+                <td>1</td>
+                <td>8484.396743</td>
+              </tr>
+              <tr>
+                <td>15259</td>
+                <td>1.55</td>
+                <td>0.710209876</td>
+                <td>STNWG</td>
+                <td>3</td>
+                <td>M</td>
+                <td>A</td>
+                <td>1</td>
+                <td>1</td>
+                <td>1</td>
+                <td>209.2950312</td>
+              </tr>
+              <tr>
+                <td>15260</td>
+                <td>1.12</td>
+                <td>0.946148771</td>
+                <td>SEDAN</td>
+                <td>3</td>
+                <td>F</td>
+                <td>A</td>
+                <td>4</td>
+                <td>1</td>
+                <td>1</td>
+                <td>375.2932936</td>
+              </tr>
+              <tr>
+                <td>15266</td>
+                <td>1.01</td>
+                <td>0.852631563</td>
+                <td>SEDAN</td>
+                <td>4</td>
+                <td>M</td>
+                <td>A</td>
+                <td>6</td>
+                <td>1</td>
+                <td>1</td>
+                <td>1039.720737</td>
+              </tr>
+              <tr>
+                <td>15267</td>
+                <td>1.08</td>
+                <td>0.65853196</td>
+                <td>SEDAN</td>
+                <td>4</td>
+                <td>M</td>
+                <td>A</td>
+                <td>4</td>
+                <td>1</td>
+                <td>1</td>
+                <td>1043.470124</td>
+              </tr>
+              <tr>
+                <td>15268</td>
+                <td>1.16</td>
+                <td>0.535511224</td>
+                <td>SEDAN</td>
+                <td>3</td>
+                <td>F</td>
+                <td>A</td>
+                <td>3</td>
+                <td>1</td>
+                <td>1</td>
+                <td>2105.679787</td>
+              </tr>
+              <tr>
+                <td>15269</td>
+                <td>2.34</td>
+                <td>0.977422904</td>
+                <td>SEDAN</td>
+                <td>2</td>
+                <td>M</td>
+                <td>A</td>
+                <td>4</td>
+                <td>1</td>
+                <td>1</td>
+                <td>29661.34782</td>
+              </tr>
+              <tr>
+                <td>15271</td>
+                <td>1.35</td>
+                <td>0.423387514</td>
+                <td>SEDAN</td>
+                <td>2</td>
+                <td>F</td>
+                <td>A</td>
+                <td>3</td>
+                <td>1</td>
+                <td>1</td>
+                <td>529.5445626</td>
+              </tr>
+              <tr>
+                <td>15272</td>
+                <td>1.35</td>
+                <td>0.90907653</td>
+                <td>HDTOP</td>
+                <td>4</td>
+                <td>F</td>
+                <td>A</td>
+                <td>2</td>
+                <td>1</td>
+                <td>1</td>
+                <td>890.9745496</td>
+              </tr>
+              <tr>
+                <td>15276</td>
+                <td>0.81</td>
+                <td>0.720333101</td>
+                <td>HBACK</td>
+                <td>3</td>
+                <td>M</td>
+                <td>A</td>
+                <td>5</td>
+                <td>1</td>
+                <td>1</td>
+                <td>200.3985037</td>
+              </tr>
+              <tr>
+                <td>15279</td>
+                <td>1.93</td>
+                <td>0.765258978</td>
+                <td>SEDAN</td>
+                <td>3</td>
+                <td>F</td>
+                <td>A</td>
+                <td>3</td>
+                <td>1</td>
+                <td>1</td>
+                <td>207.1742259</td>
+              </tr>
+              <tr>
+                <td>15281</td>
+                <td>3.19</td>
+                <td>0.065042954</td>
+                <td>STNWG</td>
+                <td>1</td>
+                <td>F</td>
+                <td>A</td>
+                <td>4</td>
+                <td>1</td>
+                <td>1</td>
+                <td>3356.78367</td>
+              </tr>
+              <tr>
+                <td>15284</td>
+                <td>0.44</td>
+                <td>0.86293275</td>
+                <td>SEDAN</td>
+                <td>4</td>
+                <td>M</td>
+                <td>A</td>
+                <td>4</td>
+                <td>1</td>
+                <td>1</td>
+                <td>933.5177364</td>
+              </tr>
+              <tr>
+                <td>15286</td>
+                <td>0.95</td>
+                <td>0.603676011</td>
+                <td>HBACK</td>
+                <td>3</td>
+                <td>F</td>
+                <td>A</td>
+                <td>1</td>
+                <td>1</td>
+                <td>1</td>
+                <td>3452.530677</td>
+              </tr>
+              <tr>
+                <td>15287</td>
+                <td>0.87</td>
+                <td>0.30292167</td>
+                <td>SEDAN</td>
+                <td>4</td>
+                <td>M</td>
+                <td>A</td>
+                <td>4</td>
+                <td>1</td>
+                <td>1</td>
+                <td>10305.18492</td>
+              </tr>
+              <tr>
+                <td>15288</td>
+                <td>1.51</td>
+                <td>0.566949575</td>
+                <td>HDTOP</td>
+                <td>3</td>
+                <td>F</td>
+                <td>A</td>
+                <td>3</td>
+                <td>1</td>
+                <td>1</td>
+                <td>2451.641159</td>
+              </tr>
+              <tr>
+                <td>15289</td>
+                <td>1.06</td>
+                <td>0.531159782</td>
+                <td>SEDAN</td>
+                <td>3</td>
+                <td>F</td>
+                <td>A</td>
+                <td>2</td>
+                <td>1</td>
+                <td>1</td>
+                <td>204.7412998</td>
+              </tr>
+              <tr>
+                <td>15290</td>
+                <td>0.47</td>
+                <td>0.840914913</td>
+                <td>HBACK</td>
+                <td>4</td>
+                <td>F</td>
+                <td>A</td>
+                <td>6</td>
+                <td>1</td>
+                <td>1</td>
+                <td>1078.924772</td>
+              </tr>
+              <tr>
+                <td>15291</td>
+                <td>0.83</td>
+                <td>0.818848752</td>
+                <td>SEDAN</td>
+                <td>3</td>
+                <td>F</td>
+                <td>A</td>
+                <td>3</td>
+                <td>1</td>
+                <td>1</td>
+                <td>374.4051561</td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
       </div>
-   </div>
-   <div class="row m-t-40 m-b-50">
-      <div class="col-md-12 text-center">
-         <a data-toggle="modal" data-target="#demorequest" class="btn btn-lg btn-circle skl-btn2 txt-upper col-sm-6 center-align-div">Request a custom demo</a>
-      </div>
-   </div>
+    </div>
+  </div>
+  <div class="row m-t-40 m-b-50">
+    <div class="col-md-12 text-center">
+      <a data-toggle="modal" data-target="#demorequest" class="btn btn-lg btn-circle skl-btn2 txt-upper col-sm-6 center-align-div">Request a custom demo</a>
+    </div>
+  </div>
 </div>
+{% endblock %} {% block extrajs%}
+<script src="{% static 'assets/scripts/claim-predict.js' %}"></script>
 {% endblock %}
-{% block extrajs%}
-<script src="{% static 'assets/scripts/claim-predict.js' %}"></script> 
-{% endblock %}
-

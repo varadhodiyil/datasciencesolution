@@ -37,7 +37,7 @@ app.controller("claimCtrl", function ($scope, $http) {
 
         }
     };
-$scope.submit(true);
+// $scope.submit(true);
 
 
 
